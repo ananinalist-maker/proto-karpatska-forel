@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Карпатська Форель · готель біля ставків у Сваляві, Закарпаття</title>
 <meta name="description" content="Готель біля форелевих ставків у Сваляві: номери з терасою й окремим входом, чан на карпатських травах, басейн з підігрівом. Бронювання напряму в господаря.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2716%27 fill=%27%2316211d%27/%3E%3Cpath d=%27M7 18c3-5 11-6 16-1-2 0-3 1-4 2-4 1-8 0-12-1Z%27 fill=%27%23e3b673%27/%3E%3C/svg%3E">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0f1916">
 <meta property="og:title" content="Карпатська Форель · Свалява, Закарпаття">
@@ -14,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/hero-wide.jpg" media="(min-aspect-ratio: 9/10)">
-<link rel="preload" as="image" href="img/hero-tall.jpg" media="(max-aspect-ratio: 9/10)">
+<link rel="preload" as="image" href="seq/m/001.webp" media="(max-aspect-ratio: 9/10)">
 <script>
 document.documentElement.classList.add('js');
 if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('rm');
@@ -495,7 +496,7 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
 <section class="hero" id="top" aria-labelledby="h1">
   <div class="stage" id="stage">
     <picture>
-      <source media="(max-aspect-ratio: 9/10)" srcset="img/hero-tall.jpg">
+      <source media="(max-aspect-ratio: 9/10)" srcset="seq/m/001.webp">
       <img class="poster" src="img/hero-wide.jpg" alt="Ставок біля колиби з цегляною піччю, на схилі золотий листяний ліс, на березі перший сніг" fetchpriority="high">
     </picture>
     <canvas id="water" aria-hidden="true"></canvas>
@@ -530,7 +531,7 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
 
     <div class="rail" aria-hidden="true"><i></i></div>
     <div class="hint" id="hint" aria-hidden="true">гортайте</div>
-    <p class="cap">Прототип сайту. Фото ставка біля колиби з Google-картки готелю, рух води додано на сайті.</p>
+    <p class="cap">Прототип сайту. Настроєве відео, створене з фото ставка з Google-картки готелю. У робочій версії тут буде ваше відео.</p>
   </div>
 </section>
 
@@ -904,7 +905,7 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
       <div><b>Коротко</b><p>Шість номерів з терасами</p><p>Чан на травах, басейн з підігрівом</p><p>Сніданок у вартості, стоянка безкоштовно</p></div>
     </div>
     <div class="credits">
-      <p>Фото готелю: Google-картка «Карпатської Форелі» (Google Карти й Google Готелі), знімки власника і гостей. На першому екрані справжнє фото ставка, рух води додано на сайті.</p>
+      <p>Фото готелю: Google-картка «Карпатської Форелі» (Google Карти й Google Готелі), знімки власника і гостей. На першому екрані настроєве відео, створене з фото ставка біля колиби (Google-картка готелю).</p>
       <p>Фото околиць: Wikimedia Commons. Olga1969 (басейн «Квітки Полонини»), Sanya7901 (замок Паланок), Ponomarenko Hanna (водоспад Скакало), Misha Reme (озеро Синевир), усі CC BY-SA 4.0, обрізано й зменшено.</p>
       <p>Номери, правила й послуги: сторінки готелю в каталогах відпочинку. Відстані й карта: OpenStreetMap. Оцінка й цитати: відгуки гостей у Google станом на 05.10.2026.</p>
       <p>Прототип сайту, зібраний за відкритими даними. Це не офіційний сайт готелю.</p>
@@ -975,91 +976,43 @@ function heroFrame(){
   hint.style.opacity=clamp(1-p/.06,0,1);
 }
 
-/* ---------- живий ставок (WebGL) ---------- */
-var cv=$('#water'), gl=null, prg=null, tex=null, U={}, img=null, imgAsp=1, cur=null, t0=performance.now(), ring={x:.5,y:.8,t:-99}, nextRing=2.5, heroVisible=true;
-var VARS={
-  wide:{src:'img/hero-wide.jpg',wl:.555,fx:.78,fy:.42},
-  tall:{src:'img/hero-tall.jpg',wl:.505,fx:.55,fy:.40}
-};
-function pickVar(){return matchMedia('(max-aspect-ratio: 9/10)').matches?'tall':'wide'}
-var VS='attribute vec2 a;varying vec2 v;void main(){v=vec2(a.x*.5+.5,.5-a.y*.5);gl_Position=vec4(a,0.,1.);}';
-var FS=['precision highp float;varying vec2 v;uniform sampler2D tex;uniform vec2 sc;uniform float zm;uniform vec2 fc;uniform float wl;uniform float t;uniform vec3 rg;uniform float ia;',
-'void main(){',
-' vec2 u=.5+(v-.5)*sc;',
-' u=fc+(u-fc)/zm;',
-' float d=u.y-wl;',
-' if(d>0.){',
-'  float k=clamp(d/(1.-wl),0.,1.);',
-'  float m=smoothstep(0.,.03,d);',
-'  float q=k-.375*k*k;',
-'  float w1=sin(150.*q-t*1.55+sin(u.x*6.+t*.35)*1.3);',
-'  float w2=sin(82.*q+t*1.05+u.x*15.);',
-'  float amp=(.0011+.0052*k)*m;',
-'  vec2 off=vec2((w1*.7+w2*.3)*amp,w2*amp*.22);',
-'  vec2 dd=(u-rg.xy)*vec2(ia,1.);dd.y*=2.8;',
-'  float r=length(dd);float fr=rg.z*.06;',
-'  float rn=sin((r-fr)*140.)*exp(-abs(r-fr)*38.)*exp(-rg.z*.75)*step(0.,rg.z)*smoothstep(0.,.02,fr);',
-'  off+=normalize(dd+1e-5)*rn*.0045*m;',
-'  vec4 c=texture2D(tex,clamp(u+off,.001,.999));',
-'  c.rgb+=(w1*.012*(.3+k)+rn*.05)*m;',
-'  gl_FragColor=c;',
-' }else{gl_FragColor=texture2D(tex,u);}',
-'}'].join('\n');
-function sh(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){console.warn(gl.getShaderInfoLog(s));return null}return s}
-function initGL(){
-  try{gl=cv.getContext('webgl',{alpha:false,antialias:false,premultipliedAlpha:false,preserveDrawingBuffer:false})}catch(e){gl=null}
-  if(!gl)return false;
-  var vs=sh(gl.VERTEX_SHADER,VS), fs=sh(gl.FRAGMENT_SHADER,FS); if(!vs||!fs){gl=null;return false}
-  prg=gl.createProgram();gl.attachShader(prg,vs);gl.attachShader(prg,fs);gl.linkProgram(prg);
-  if(!gl.getProgramParameter(prg,gl.LINK_STATUS)){gl=null;return false}
-  gl.useProgram(prg);
-  var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
-  var loc=gl.getAttribLocation(prg,'a');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
-  ['sc','zm','fc','wl','t','rg','ia','tex'].forEach(function(n){U[n]=gl.getUniformLocation(prg,n)});
-  tex=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tex);
-  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
-  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
-  gl.uniform1i(U.tex,0);
-  cv.addEventListener('webglcontextlost',function(e){e.preventDefault();cv.classList.remove('on');gl=null});
-  return true;
+/* ---------- кінострічка на скролі: настроєве відео, створене з фото ставка ---------- */
+var cv=$('#water'), ctx=cv.getContext('2d'), heroVisible=true;
+var SEQ={d:{n:96,dir:'seq/d/'},m:{n:64,dir:'seq/m/'}};
+function pickSeq(){return matchMedia('(max-aspect-ratio: 9/10)').matches?'m':'d'}
+var cur=null, frames=[], lastDrawn=-1;
+function pad(i){return ('00'+i).slice(-3)}
+function loadSeq(k){
+  cur=k; frames=new Array(SEQ[k].n); lastDrawn=-1;
+  var S=SEQ[k], order=[], seen={};
+  /* спершу кожен 8-й кадр, далі решта: промотка працює одразу, а потім стає плавнішою */
+  [8,4,2,1].forEach(function(st){for(var i=0;i<S.n;i+=st){if(!seen[i]){seen[i]=1;order.push(i)}}});
+  var q=0, active=0;
+  function next(){
+    while(active<6&&q<order.length){(function(i){active++;var im=new Image();im.decoding='async';
+      im.onload=function(){active--;if(cur!==k)return;frames[i]=im;if(i===0){sizeCanvas();drawFrame(true)}next()};
+      im.onerror=function(){active--;next()};
+      im.src=S.dir+pad(i+1)+'.webp';})(order[q++])}
+  }
+  next();
 }
-function loadVar(name){
-  cur=name;var V=VARS[name];var im=new Image();im.decoding='async';
-  im.onload=function(){if(cur!==name||!gl)return;img=im;imgAsp=im.naturalWidth/im.naturalHeight;
-    gl.bindTexture(gl.TEXTURE_2D,tex);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,false);
-    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,im);
-    sizeCanvas();draw(performance.now());requestAnimationFrame(function(){cv.classList.add('on')});};
-  im.src=V.src;
+function sizeCanvas(){var dpr=Math.min(window.devicePixelRatio||1,1.5);var w=Math.round(stage.clientWidth*dpr),h=Math.round(stage.clientHeight*dpr);if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;lastDrawn=-1}}
+function nearest(i){if(frames[i])return i;for(var d=1;d<frames.length;d++){if(frames[i-d])return i-d;if(frames[i+d])return i+d}return -1}
+function drawFrame(force){
+  var S=SEQ[cur], i=Math.round(clamp(prog/.9,0,1)*(S.n-1)), j=nearest(i);
+  if(j<0||(j===lastDrawn&&!force))return;
+  lastDrawn=j; var im=frames[j];
+  var cw=cv.width,ch=cv.height,ia=im.naturalWidth/im.naturalHeight,dw,dh;
+  if(cw/ch>ia){dw=cw;dh=cw/ia}else{dh=ch;dw=ch*ia}
+  ctx.drawImage(im,(cw-dw)/2,(ch-dh)/2,dw,dh);
+  if(!cv.classList.contains('on'))cv.classList.add('on');
 }
-function sizeCanvas(){
-  var dpr=Math.min(window.devicePixelRatio||1,1.5);
-  var w=Math.round(stage.clientWidth*dpr), h=Math.round(stage.clientHeight*dpr);
-  var cap=1920/Math.max(w,h); if(cap<1){w=Math.round(w*cap);h=Math.round(h*cap)}
-  if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
-  if(gl)gl.viewport(0,0,w,h);
-}
-function draw(now){
-  if(!gl||!img)return;
-  var V=VARS[cur], t=(now-t0)/1000;
-  var ca=cv.width/cv.height, sx=1, sy=1;
-  if(ca>imgAsp){sy=imgAsp/ca}else{sx=ca/imgAsp}
-  var z=1+.17*ease(prog);
-  if(t>nextRing){ring.x=.18+Math.random()*.64;ring.y=V.wl+.06+Math.random()*(.86-V.wl-.06);ring.t=t;nextRing=t+5+Math.random()*4}
-  gl.uniform2f(U.sc,sx,sy);gl.uniform1f(U.zm,z);gl.uniform2f(U.fc,V.fx,V.fy);gl.uniform1f(U.wl,V.wl);
-  gl.uniform1f(U.t,t);gl.uniform3f(U.rg,ring.x,ring.y,t-ring.t);gl.uniform1f(U.ia,imgAsp);
-  gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
-}
-var poster=$('.stage img.poster');
-function posterZoom(){ /* без WebGL збільшуємо фото звичайним CSS */
-  if(gl&&img)return; var z=1+.17*ease(prog); poster.style.transform='scale('+z.toFixed(4)+')';
-  poster.style.transformOrigin=(pickVar()==='tall'?'55% 40%':'78% 42%');
-}
-if(!RM&&initGL()){loadVar(pickVar());
-  addEventListener('resize',function(){sizeCanvas();var n=pickVar();if(n!==cur){img=null;cv.classList.remove('on');loadVar(n)}});
+if(!RM){loadSeq(pickSeq());
+  addEventListener('resize',function(){sizeCanvas();var k=pickSeq();if(k!==cur)loadSeq(k);else drawFrame(true)});
 }
 if('IntersectionObserver' in window){new IntersectionObserver(function(es){heroVisible=es[0].isIntersecting},{threshold:0}).observe(hero)}
-function loop(now){
-  if(heroVisible){heroFrame();if(gl&&img)draw(now);else posterZoom()}
+function loop(){
+  if(heroVisible){heroFrame();if(cur)drawFrame(false)}
   requestAnimationFrame(loop);
 }
 if(!RM)requestAnimationFrame(loop);else heroFrame();
