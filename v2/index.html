@@ -461,6 +461,33 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
   .c3 h2{margin-bottom:18px}
   .hint{display:none}
 }
+
+/* ДЕКОР: мотиви закарпатської вишивки, форель, буковий лист */
+body{background:var(--paper) url(img/decor/lattice.svg)}
+#about,#seasons,#rooms,#territory,#reviews,#route,#faq{background-image:url(img/decor/band_v.svg),url(img/decor/band_v.svg),url(img/decor/lattice.svg)!important;background-repeat:repeat-y,repeat-y,repeat!important;background-position:left 14px top,right 14px top,0 0!important;background-size:30px auto,30px auto,64px 64px!important}
+#rooms,#reviews{background-color:var(--paper2)!important}
+@media (max-width:900px){#about,#seasons,#rooms,#territory,#reviews,#route,#faq{background-position:left 3px top,right 3px top,0 0!important;background-size:12px auto,12px auto,48px 48px!important}}
+.sec{position:relative;overflow-x:clip}
+.sec>.wrap,.sec>.strip{position:relative;z-index:1}
+.rushnyk{height:60px;background:var(--paper) url(img/decor/band.svg) repeat-x center/auto 40px;position:relative;z-index:2}
+.eyebrow::before{width:12px;height:12px;border-radius:0;background:url(img/decor/rosette.svg) center/contain no-repeat}
+.dark .eyebrow::before{background:var(--gold2);border-radius:50%;width:6px;height:6px}
+.deco{position:absolute;pointer-events:none;z-index:0;will-change:transform}
+.deco i{display:block;width:100%;height:100%;background:center/contain no-repeat}
+.deco.ros{width:clamp(170px,19vw,280px);aspect-ratio:1}
+.deco.ros.sm{width:clamp(110px,11vw,160px)}
+.deco.ros i{background-image:url(img/decor/rosette.svg);opacity:.2}
+.deco.fish{width:clamp(130px,14vw,210px);aspect-ratio:210/84}
+.deco.fish.big{width:clamp(170px,19vw,280px)}
+.deco.fish i{background-image:url(img/decor/trout.svg);animation:swim 3.6s ease-in-out infinite}
+.deco.fish::after{content:"";position:absolute;left:-16%;top:42%;width:34%;aspect-ratio:3/1;border-radius:50%;border:1.5px solid rgba(31,59,58,.25);animation:ripple 3.6s ease-out infinite}
+.deco.leaf{width:clamp(26px,2.8vw,42px);aspect-ratio:48/100}
+.deco.leaf i{background-image:url(img/decor/leaf.svg);transform:rotate(var(--r,20deg));animation:sway 5.5s ease-in-out infinite}
+@keyframes swim{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-6px) rotate(1.5deg)}}
+@keyframes sway{0%,100%{transform:rotate(var(--r,20deg)) translateY(0)}50%{transform:rotate(calc(var(--r,20deg) + 14deg)) translateY(8px)}}
+@keyframes ripple{0%{transform:scale(.5);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+.rm .deco i,.rm .deco::after{animation:none}
+@media (max-width:900px){.deco.hide-m{display:none}.deco.fish{width:110px}.deco.fish.big{width:140px}.rushnyk{height:38px;background-size:auto 24px}}
 </style>
 </head>
 <body>
@@ -536,7 +563,9 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
 </section>
 
 <!-- ВСТУП -->
+<div class="rushnyk" aria-hidden="true"></div>
 <section class="sec" id="about" aria-labelledby="about-t">
+<div class="deco ros" style="right:-110px;top:-10px" data-par="60" aria-hidden="true"><i></i></div><div class="deco leaf hide-m" style="left:5%;top:16%;--r:-18deg" data-par="120" aria-hidden="true"><i></i></div><div class="deco leaf" style="right:11%;bottom:10%;--r:28deg" data-par="-90" aria-hidden="true"><i></i></div><div class="deco fish" style="left:4%;bottom:5%" data-swim="260" data-par="20" aria-hidden="true"><i></i></div>
   <div class="wrap">
     <div class="intro">
       <div class="rv">
@@ -560,6 +589,7 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
 
 <!-- ПОРИ РОКУ -->
 <section class="sec" id="seasons" aria-labelledby="sea-t" style="padding-top:0">
+<div class="deco leaf hide-m" style="left:1.5%;top:2%;--r:12deg" data-par="90" aria-hidden="true"><i></i></div><div class="deco leaf hide-m" style="right:3%;bottom:6%;--r:-30deg" data-par="70" aria-hidden="true"><i></i></div>
   <div class="wrap">
     <div class="seasons-head">
       <div class="rv">
@@ -609,7 +639,9 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
 </section>
 
 <!-- НОМЕРИ -->
+<div class="rushnyk" aria-hidden="true"></div>
 <section class="sec" id="rooms" aria-labelledby="rooms-t" style="background:var(--paper2)">
+<div class="deco ros sm hide-m" style="left:-46px;bottom:90px" data-par="50" aria-hidden="true"><i></i></div><div class="deco leaf" style="right:4%;top:5%;--r:36deg" data-par="100" aria-hidden="true"><i></i></div>
   <div class="wrap">
     <div class="head-row">
       <div class="rv">
@@ -700,6 +732,7 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
 
 <!-- ТЕРИТОРІЯ -->
 <section class="sec" id="territory" aria-labelledby="ter-t">
+<div class="deco fish big" style="right:5%;bottom:36px" data-swim="320" data-par="24" aria-hidden="true"><i></i></div>
   <div class="wrap">
     <div class="ter-head">
       <div class="rv">
@@ -743,7 +776,9 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
 </section>
 
 <!-- ВІДГУКИ -->
+<div class="rushnyk" aria-hidden="true"></div>
 <section class="sec" id="reviews" aria-labelledby="rev-t" style="background:var(--paper2)">
+<div class="deco ros" style="right:-70px;bottom:-30px" data-par="40" aria-hidden="true"><i></i></div><div class="deco leaf hide-m" style="left:3%;top:8%;--r:-24deg" data-par="80" aria-hidden="true"><i></i></div>
   <div class="wrap rev">
     <div class="score rv">
       <span class="eyebrow">Відгуки</span>
@@ -773,6 +808,7 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
 
 <!-- ЯК ДОЇХАТИ -->
 <section class="sec" id="route" aria-labelledby="route-t">
+<div class="deco leaf hide-m" style="right:4%;top:10%;--r:20deg" data-par="90" aria-hidden="true"><i></i></div>
   <div class="wrap">
     <div class="head-row" style="margin-bottom:0">
       <div class="rv">
@@ -880,6 +916,7 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
 
 <!-- ПИТАННЯ -->
 <section class="sec" id="faq" aria-labelledby="faq-t">
+<div class="deco fish big hide-m" style="right:5%;top:40%" data-swim="320" data-par="40" aria-hidden="true"><i></i></div><div class="deco leaf hide-m" style="right:20%;top:10%;--r:-12deg" data-par="110" aria-hidden="true"><i></i></div><div class="deco ros sm" style="right:7%;bottom:6%" data-par="30" aria-hidden="true"><i></i></div>
   <div class="wrap">
     <div class="rv"><span class="eyebrow">Питання</span><h2 id="faq-t" style="margin-top:22px">Що питають <em>перед бронюванням</em></h2></div>
     <div class="faq rv">
@@ -896,6 +933,7 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
 </section>
 </main>
 
+<div class="rushnyk" aria-hidden="true"></div>
 <footer class="dark">
   <div class="wrap">
     <p class="fbig">Карпатська <em style="color:var(--gold2)">Форель</em></p>
@@ -908,6 +946,7 @@ footer{padding:clamp(80px,10vw,140px) 0 120px}
       <p>Фото готелю: Google-картка «Карпатської Форелі» (Google Карти й Google Готелі), знімки власника і гостей. На першому екрані настроєве відео, створене з фото ставка біля колиби (Google-картка готелю).</p>
       <p>Фото околиць: Wikimedia Commons. Olga1969 (басейн «Квітки Полонини»), Sanya7901 (замок Паланок), Ponomarenko Hanna (водоспад Скакало), Misha Reme (озеро Синевир), усі CC BY-SA 4.0, обрізано й зменшено.</p>
       <p>Номери, правила й послуги: сторінки готелю в каталогах відпочинку. Відстані й карта: OpenStreetMap. Оцінка й цитати: відгуки гостей у Google станом на 05.10.2026.</p>
+      <p>Декор: мотиви закарпатської та бойківської вишивки (ромби, кривульки, восьмипелюсткова розетка), форель і буковий лист намальовані для прототипу.</p>
       <p>Прототип сайту, зібраний за відкритими даними. Це не офіційний сайт готелю.</p>
     </div>
   </div>
@@ -1016,6 +1055,10 @@ function loop(){
   requestAnimationFrame(loop);
 }
 if(!RM)requestAnimationFrame(loop);else heroFrame();
+
+/* ---------- декор: форель пливе, листя падає на скролі ---------- */
+var decos=$$('.deco[data-par],.deco[data-swim]');
+if(!RM&&decos.length){(function dl(){var vh=innerHeight;decos.forEach(function(el){var r=el.parentNode.getBoundingClientRect();if(r.bottom<-300||r.top>vh+300)return;var p=(vh-r.top)/(vh+r.height),sp=+(el.dataset.par||0),sw=+(el.dataset.swim||0);el.style.transform='translate3d('+(sw*(.5-p)).toFixed(1)+'px,'+(sp*(.5-p)).toFixed(1)+'px,0)'});requestAnimationFrame(dl)})()}
 
 /* ---------- пори року ---------- */
 var sImgs=$$('.s-media img'), sTag=$('#sTag'), steps=$$('.s-step');

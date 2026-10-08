@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300;0,800;1,300&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero-ridge.jpg">
+<link rel="preload" as="image" href="img/hp-pond.jpg">
 <script>
 document.documentElement.classList.add('js');
 if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('rm');
@@ -77,28 +77,40 @@ h2 .thin{font-weight:300}
 .menu-open .overlay a.big{opacity:1;transform:none}
 .overlay a.big:nth-child(2){transition-delay:.05s}.overlay a.big:nth-child(3){transition-delay:.1s}.overlay a.big:nth-child(4){transition-delay:.15s}.overlay a.big:nth-child(5){transition-delay:.2s}
 
-/* ПЕРШИЙ ЕКРАН */
-.hero{position:relative;height:100vh;height:100dvh;min-height:620px;overflow:hidden;background:#20253a}
-.hero .lay{position:absolute;inset:-3% -3% -3% -3%;width:106%;height:106%;object-fit:cover;object-position:50% 62%;will-change:transform}
-.word{position:absolute;left:0;right:0;top:51%;text-align:center;font-family:var(--slab);font-weight:800;font-size:clamp(7rem,23vw,26rem);line-height:.8;letter-spacing:-.04em;color:rgba(255,255,255,.88);
-  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,236,214,.7));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;transform:translateY(-50%);will-change:transform;user-select:none;pointer-events:none}
-.h-mist{position:absolute;left:-10%;width:120%;bottom:22%;opacity:.55;pointer-events:none;animation:drift 38s linear infinite alternate}
-.h-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,20,.45) 0%,rgba(10,12,20,0) 22%,rgba(10,12,16,0) 55%,rgba(12,15,13,.82) 88%,var(--bg) 100%);pointer-events:none}
-.h-copy{position:absolute;left:var(--pad);right:var(--pad);bottom:150px;z-index:2;display:grid;grid-template-columns:1fr minmax(0,440px);gap:40px;align-items:end}
-.h-copy .kicker{color:var(--amber)}
-.h-copy h1{font-size:clamp(2rem,3.2vw,2.9rem);margin:14px 0 22px;letter-spacing:-.02em}
-.h-copy p{margin:0 0 14px;color:var(--ink2);font-size:15px}
-.h-copy .row{display:flex;gap:10px;flex-wrap:wrap}
-.h-side{font-size:12px;color:var(--ink2);line-height:1.5;display:flex;align-items:baseline;gap:10px}
-.h-side b{font-size:30px;font-weight:300;color:var(--ink);letter-spacing:-.02em}
-.h-prof{position:absolute;left:var(--pad);right:var(--pad);bottom:22px;height:110px;z-index:2}
-.h-prof svg{width:100%;height:100%;overflow:visible}
-.h-prof .lbl{position:absolute;bottom:0;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
-.h-prof .lbl b{display:block;color:var(--ink);font-weight:600;letter-spacing:.06em;font-size:12px}
-.h-prof .l1{left:0}.h-prof .l2{right:0;text-align:right}
-.scroll-hint{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:3;width:1px;height:46px;background:linear-gradient(rgba(255,255,255,.7),transparent)}
+/* ПЕРШИЙ ЕКРАН: акордеон з фото готелю */
+.hero{position:relative;min-height:100vh;min-height:100dvh;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,3.5vw,56px);align-items:stretch;padding:clamp(96px,13vh,128px) var(--pad) clamp(30px,5vh,52px);overflow:hidden;background:var(--bg)}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 25% 55%,transparent 15%,var(--bg) 78%);pointer-events:none;z-index:0}
+.h-left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(6px,2vh,24px)}
+.h-left h1{font-size:clamp(2.6rem,5vw,5rem);line-height:.98;letter-spacing:-.035em;margin:20px 0 22px}
+.h-left h1 .thin{display:block;font-weight:300;color:var(--amber)}
+.h-left p{color:var(--ink2);font-size:clamp(1rem,1.2vw,1.1rem);max-width:40ch;margin:0 0 28px}
+.h-left .row{display:flex;gap:10px;flex-wrap:wrap}
+.h-meta{display:flex;gap:clamp(18px,2.6vw,40px);margin-top:clamp(28px,5vh,52px);padding-top:22px;border-top:1px solid var(--line)}
+.h-meta span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.h-meta b{display:block;font-family:var(--slab);font-weight:800;font-size:clamp(1.6rem,2.4vw,2.2rem);letter-spacing:-.02em;color:var(--ink);text-transform:none;line-height:1.15}
+.acc{position:relative;z-index:2;display:flex;gap:10px;min-height:min(72vh,660px)}
+.pn{position:relative;flex:1 1 0;min-width:0;border:0;padding:0;border-radius:6px;overflow:hidden;cursor:pointer;background:#111;color:#fff;text-align:left;transition:flex-grow .9s var(--ease)}
+.pn[aria-selected="true"]{flex-grow:5.4}
+.pn img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);filter:saturate(.7) brightness(.62);transition:transform 1.8s var(--ease),filter .9s var(--ease)}
+.pn[aria-selected="true"] img{transform:scale(1);filter:none}
+.pn:hover img{filter:saturate(.9) brightness(.8)}
+.pn[aria-selected="true"]:hover img{filter:none}
+.pn::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 48%,rgba(0,0,0,.8) 100%);pointer-events:none}
+.pn-n{position:absolute;left:50%;top:18px;transform:translateX(-50%);z-index:1;font-size:12px;letter-spacing:.2em;color:rgba(255,255,255,.75);transition:left .9s var(--ease),transform .9s var(--ease)}
+.pn[aria-selected="true"] .pn-n{left:24px;transform:none}
+.pn-v{position:absolute;left:50%;bottom:24px;z-index:1;transform:translateX(-50%) rotate(180deg);writing-mode:vertical-rl;font-size:12.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;transition:opacity .4s var(--ease)}
+.pn[aria-selected="true"] .pn-v{opacity:0}
+.pn-x{position:absolute;left:26px;right:26px;bottom:26px;z-index:1;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease),transform .8s var(--ease);pointer-events:none}
+.pn[aria-selected="true"] .pn-x{opacity:1;transform:none;transition-delay:.35s}
+.pn-x b{display:block;font-size:clamp(1.4rem,2.2vw,2.1rem);font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.pn-x span{display:block;font-size:14.5px;color:rgba(255,255,255,.85);max-width:44ch;line-height:1.55}
+.pn .pbar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--amber);transform-origin:left;transform:scaleX(0);z-index:2}
+.pn[aria-selected="true"] .pbar.run{animation:pfill 6s linear forwards}
+@keyframes pfill{to{transform:scaleX(1)}}
+.h-mist{position:absolute;left:-10%;width:120%;bottom:-8%;opacity:.45;pointer-events:none;z-index:3;animation:drift 38s ease-in-out infinite alternate}
+.h-cap{position:absolute;right:var(--pad);bottom:10px;z-index:3;font-size:11px;color:var(--mute)}
 @keyframes drift{from{transform:translateX(-4%)}to{transform:translateX(4%)}}
-
+.rm .pn,.rm .pn img{transition:none}
 /* МІНІ-ГОТЕЛЬ: слайдер з туманом */
 .tour{background:var(--bg);overflow:hidden}
 .topo{position:absolute;inset:0;background:url(img/topo.svg) center/cover no-repeat;opacity:1;pointer-events:none}
@@ -341,7 +353,14 @@ footer{padding:clamp(80px,10vw,130px) 0 120px;border-top:1px solid var(--line)}
   .fgrid{grid-template-columns:1fr}
   #cal{grid-template-columns:1fr}
   .two{grid-template-columns:1fr}
-  .h-copy{grid-template-columns:1fr;gap:6px}
+  .hero{grid-template-columns:1fr;min-height:0;padding-top:92px;gap:24px}
+  .h-left{justify-content:flex-start;padding-bottom:0}
+  .acc{flex-direction:column;min-height:0;height:540px;gap:8px}
+  .pn[aria-selected="true"]{flex-grow:4.6}
+  .pn-v{writing-mode:horizontal-tb;transform:translateY(-50%);left:20px;bottom:auto;top:50%}
+  .pn-n{left:auto;right:18px;top:50%;transform:translateY(-50%)}
+  .pn[aria-selected="true"] .pn-n{left:20px;right:auto;top:16px;transform:none}
+  .pn-x{left:20px;right:20px;bottom:20px}
   .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:30;gap:6px;padding:6px;border-radius:999px;background:rgba(20,27,24,.86);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 0 0 1px var(--line),0 18px 40px -16px rgba(0,0,0,.7);transition:transform .6s var(--ease)}
   .mbar a{flex:1;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:600;background:rgba(238,240,236,.07)}
   .mbar a.main{flex:1.5;background:var(--amber);color:#1a1209}
@@ -350,13 +369,9 @@ footer{padding:clamp(80px,10vw,130px) 0 120px;border-top:1px solid var(--line)}
 }
 @media (max-width:560px){
   .top .r .btn{display:none}
-  .hero .lay{top:-36%;height:142%}
-  .word{top:45%;font-size:34vw}
-  .h-copy{bottom:92px}
-  .h-copy p{display:none}
-  .h-prof{display:none}
-  .scroll-hint{display:none}
   .rules{grid-template-columns:1fr}
+  .h-meta{gap:16px}
+  .h-left h1{font-size:2.6rem}
   .np-pt span{display:none}
   .np-pt[aria-current="true"] span{display:block}
 }
@@ -384,30 +399,41 @@ footer{padding:clamp(80px,10vw,130px) 0 120px;border-top:1px solid var(--line)}
 <main id="main">
 <!-- ПЕРШИЙ ЕКРАН -->
 <section class="hero" id="top" aria-labelledby="h1">
-  <img class="lay" id="lBg" src="img/hero-ridge.jpg" alt="" fetchpriority="high">
-  <div class="word" id="lWord" aria-hidden="true">тиша</div>
-  <img class="lay" id="lFg" src="img/hero-ridge-fg.webp" alt="">
-  <img class="h-mist" src="img/mist2.webp" alt="">
-  <div class="h-shade"></div>
-  <div class="h-copy">
-    <div>
-      <span class="kicker">Міні-готель · 6 номерів</span>
-      <h1 id="h1">Карпатська Форель</h1>
-      <div class="row">
-        <a class="btn" href="#bron" data-go>Обрати дати<span class="ic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
-        <a class="btn ghost" href="#hotel">Про готель</a>
-      </div>
+  <div class="topo" aria-hidden="true"></div>
+  <div class="h-left">
+    <span class="kicker">Міні-готель · Свалява, Закарпаття</span>
+    <h1 id="h1">Карпатська <span class="thin">Форель</span></h1>
+    <p>Шість номерів біля форелевих ставків. Тераса й окремий вхід у кожного номера, чан на карпатських травах, а довкола листяний ліс.</p>
+    <div class="row">
+      <a class="btn" href="#bron" data-go>Обрати дати<span class="ic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
+      <a class="btn ghost" href="#rooms">Номери</a>
     </div>
-    <div>
-      <p>Шість номерів біля форелевих ставків у Сваляві. У кожного тераса й окремий вхід, увечері чан на карпатських травах, а на схилах довкола листяний ліс.</p>
-      <div class="h-side"><b>4,5</b>679 відгуків у Google</div>
-    </div>
+    <div class="h-meta"><span><b>6</b>номерів</span><span><b>14</b>місць</span><span><b>4,5</b>Google, 679</span></div>
   </div>
-  <div class="h-prof" aria-hidden="true">
-    <svg id="heroProf" viewBox="0 0 1000 100" preserveAspectRatio="none"></svg>
-    <span class="lbl l1"><b>Готель · 200 м</b>Свалява</span>
-    <span class="lbl l2"><b>Стій · 1681 м</b>вершина Боржави, 17,7 км</span>
+  <div class="acc" id="acc" role="tablist" aria-label="Що є в готелі">
+      <button class="pn" type="button" role="tab" aria-selected="true" tabindex="0" aria-label="Ставки з фореллю">
+        <img src="img/hp-pond.jpg" alt="Ставок біля колиби, на схилі золотий листяний ліс"><span class="pn-n">01</span><span class="pn-v" aria-hidden="true">Ставки</span>
+        <span class="pn-x"><b>Ставки з фореллю</b><span>Форель і короп просто біля номерів, кам'яні доріжки й альтанки. Восени ліс на схилі над водою стає золотим.</span></span><i class="pbar"></i>
+      </button>
+      <button class="pn" type="button" role="tab" aria-selected="false" tabindex="-1" aria-label="Номери з терасою">
+        <img src="img/hp-room.jpg" alt="Номер з дерев'яними стінами і білою постіллю" loading="lazy"><span class="pn-n">02</span><span class="pn-v" aria-hidden="true">Номери</span>
+        <span class="pn-x"><b>Номери з терасою</b><span>Шість номерів на 14 місць, у кожного тераса й окремий вхід. Сніданок входить у вартість.</span></span><i class="pbar"></i>
+      </button>
+      <button class="pn" type="button" role="tab" aria-selected="false" tabindex="-1" aria-label="Чан на травах">
+        <img src="img/hp-chan.jpg" alt="Чан парує серед снігу" loading="lazy"><span class="pn-n">03</span><span class="pn-v" aria-hidden="true">Чан</span>
+        <span class="pn-x"><b>Чан на травах</b><span>Гаряча вода на відварі карпатських трав з видом на ставок. Працює й узимку.</span></span><i class="pbar"></i>
+      </button>
+      <button class="pn" type="button" role="tab" aria-selected="false" tabindex="-1" aria-label="Басейн з підігрівом">
+        <img src="img/hp-pool.jpg" alt="Відкритий басейн серед кипарисів" loading="lazy"><span class="pn-n">04</span><span class="pn-v" aria-hidden="true">Басейн</span>
+        <span class="pn-x"><b>Басейн з підігрівом</b><span>Відкритий, працює в теплий сезон, увечері з підсвіткою. Поруч шезлонги й джакузі.</span></span><i class="pbar"></i>
+      </button>
+      <button class="pn" type="button" role="tab" aria-selected="false" tabindex="-1" aria-label="Вечори біля води">
+        <img src="img/hp-evening.jpg" alt="Ліхтарі вздовж ставка на заході сонця" loading="lazy"><span class="pn-n">05</span><span class="pn-v" aria-hidden="true">Вечори</span>
+        <span class="pn-x"><b>Вечори біля води</b><span>Ліхтарі вздовж ставка, колиба із закарпатською та угорською кухнею, альтанки й мангал.</span></span><i class="pbar"></i>
+      </button>
   </div>
+  <img class="h-mist" src="img/mist1.webp" alt="">
+  <span class="h-cap">Фото з Google-картки готелю</span>
 </section>
 
 <!-- МІНІ-ГОТЕЛЬ -->
@@ -650,7 +676,7 @@ footer{padding:clamp(80px,10vw,130px) 0 120px;border-top:1px solid var(--line)}
     </div>
     <div class="credits">
       <p>Фото готелю: Google-картка «Карпатської Форелі», знімки власника і гостей.</p>
-      <p>Стокові фото Закарпаття (Wikimedia Commons): перший екран, захід над Боржавою, Fransua Teflon, CC BY 3.0 (хребет вирізано, щоб напис стояв за горою); туман, Byrdyak і Dmytro.ch, CC BY-SA 4.0; буковий праліс, Urs-Beat Brändli, CC BY-SA 4.0; Боржава, Khoroshkov, CC BY-SA 4.0; Шипіт, Dmytro Petishkin, CC BY 4.0; Синевир, Cornelia Pavlyshyn, CC BY-SA 4.0; Свалява, VargaA, CC BY-SA 4.0; Квітка Полонини, Olga1969; Скакало, Ponomarenko Hanna; Паланок, Sanya7901, усі CC BY-SA 4.0. Обрізано й зменшено.</p>
+      <p>Стокові фото Закарпаття (Wikimedia Commons): туман, Byrdyak і Dmytro.ch, CC BY-SA 4.0; буковий праліс, Urs-Beat Brändli, CC BY-SA 4.0; Боржава, Khoroshkov, CC BY-SA 4.0; Шипіт, Dmytro Petishkin, CC BY 4.0; Синевир, Cornelia Pavlyshyn, CC BY-SA 4.0; Свалява, VargaA, CC BY-SA 4.0; Квітка Полонини, Olga1969; Скакало, Ponomarenko Hanna; Паланок, Sanya7901, усі CC BY-SA 4.0. Обрізано й зменшено.</p>
       <p>Рельєф і висоти: SRTM 30 м через OpenTopoData. Відстані: OpenStreetMap. Номери й послуги: каталоги відпочинку. Оцінка й цитати: відгуки в Google станом на 05.10.2026.</p>
       <p>Прототип сайту, зібраний за відкритими даними. Це не офіційний сайт готелю.</p>
     </div>
@@ -698,8 +724,6 @@ function prof(w,h,pad){
   return H.map(function(v,i){var x=i/(H.length-1)*w, y=pad+(1-(v-hMin)/(hMax-hMin))*(h-pad*2);return [x,y]});
 }
 function pathD(pts){return 'M'+pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1)}).join('L')}
-var hp=prof(1000,100,6);
-$('#heroProf').innerHTML='<path d="'+pathD(hp)+'L1000,100L0,100Z" fill="rgba(230,173,110,.10)"/><path d="'+pathD(hp)+'" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.2" vector-effect="non-scaling-stroke"/>';
 var np=prof(1000,150,18);
 $('#npPath').setAttribute('d',pathD(np));
 $('#npPath').setAttribute('vector-effect','non-scaling-stroke');
@@ -746,24 +770,33 @@ addEventListener('load',fitStage);addEventListener('resize',fitStage);fitStage()
 var strip=$('#strip');
 $$('.arrows button').forEach(function(b){b.addEventListener('click',function(){var c=strip.querySelector('.dest');strip.scrollBy({left:+b.dataset.dir*(c.getBoundingClientRect().width+18)*1.5,behavior:RM?'auto':'smooth'})})});
 
-/* перший екран: глибина (фон, слово, хребет) на скролі й русі миші */
-var lBg=$('#lBg'), lWord=$('#lWord'), lFg=$('#lFg'), hero=$('#top'), forestImg=$('#forestImg');
-var mx=0,my=0,tx=0,ty=0,ticking=false;
+/* перший екран: акордеон з фото готелю */
+var pns=$$('.pn'), ai=0, at=null, hero=$('#top'), forestImg=$('#forestImg');
+function act(i,user){
+  ai=i;
+  pns.forEach(function(p,k){p.setAttribute('aria-selected',k===i);p.tabIndex=k===i?0:-1;var b=p.querySelector('.pbar');b.classList.remove('run');void b.offsetWidth;if(k===i&&!user&&!RM)b.classList.add('run')});
+}
+function auto(){if(RM)return;clearInterval(at);act(ai);at=setInterval(function(){act((ai+1)%pns.length)},6000)}
+function hold(i){clearInterval(at);act(i,true)}
+pns.forEach(function(p,i){
+  p.addEventListener('click',function(){hold(i)});
+  p.addEventListener('mouseenter',function(){if(matchMedia('(hover:hover)').matches)hold(i)});
+});
+$('#acc').addEventListener('mouseleave',function(){if(matchMedia('(hover:hover)').matches)auto()});
+$('#acc').addEventListener('keydown',function(e){
+  var n=null;if(e.key==='ArrowRight'||e.key==='ArrowDown')n=(ai+1)%pns.length;if(e.key==='ArrowLeft'||e.key==='ArrowUp')n=(ai-1+pns.length)%pns.length;
+  if(n!==null){e.preventDefault();hold(n);pns[n].focus()}
+});
+if('IntersectionObserver' in window){new IntersectionObserver(function(es){if(es[0].isIntersecting)auto();else clearInterval(at)},{threshold:.2}).observe(hero)}else auto();
+
+/* шапка й паралакс банера з буками */
 if(!RM){
-  addEventListener('mousemove',function(e){mx=(e.clientX/innerWidth-.5);my=(e.clientY/innerHeight-.5)},{passive:true});
   (function loop(){
-    tx+=(mx-tx)*.06;ty+=(my-ty)*.06;
-    var s=scrollY, hh=hero.offsetHeight;
-    if(s<hh*1.2){
-      lBg.style.transform='translate3d('+(-tx*8)+'px,'+(s*.2-ty*5)+'px,0)';
-      lWord.style.transform='translate3d('+(tx*18)+'px,calc(-50% + '+(s*.42+ty*8)+'px),0)';
-      lFg.style.transform='translate3d('+(-tx*8)+'px,'+(s*.2-ty*5)+'px,0)';
-    }
     if(forestImg){var r=forestImg.parentNode.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){forestImg.style.transform='translate3d(0,'+((r.top/innerHeight)*-60)+'px,0)'}}
-    bar.classList.toggle('solid',s>hh*.6);
+    bar.classList.toggle('solid',scrollY>80);
     requestAnimationFrame(loop);
   })();
-}else{addEventListener('scroll',function(){bar.classList.toggle('solid',scrollY>innerHeight*.6)},{passive:true})}
+}else{addEventListener('scroll',function(){bar.classList.toggle('solid',scrollY>80)},{passive:true})}
 })();
 </script>
 </body>

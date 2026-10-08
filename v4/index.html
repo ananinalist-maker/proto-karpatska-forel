@@ -344,6 +344,49 @@ footer{background:var(--coral);color:#fff;border-radius:var(--R) var(--R) 0 0;ma
   .stats{gap:10px}
   .stat{padding:20px 18px}
 }
+
+/* ДЕКОР v4: закарпатська вишивка, форель, бук, біжучі стрічки */
+body{background:var(--bg) url(img/decor/lattice.svg)}
+.sec>.wrap{position:relative;z-index:1}
+.pre::before{content:"";display:inline-block;width:14px;height:14px;margin-right:9px;vertical-align:-2px;background:url(img/decor/rosette.svg) center/contain no-repeat}
+.marq{position:relative;height:140px;margin:-34px 0 0;overflow:hidden;z-index:2;pointer-events:none}
+.marq .ln{position:absolute;left:-4%;width:108%;display:flex;overflow:hidden;white-space:nowrap;padding:13px 0;font-family:var(--disp);font-weight:800;font-size:clamp(.95rem,1.7vw,1.4rem);text-transform:uppercase;letter-spacing:.02em;color:#fff}
+.marq .ln1{top:20px;background:var(--coral);transform:rotate(-2deg);z-index:2;box-shadow:0 16px 30px -18px rgba(242,100,58,.8)}
+.marq .ln2{top:62px;background:var(--teal);transform:rotate(1.6deg)}
+.marq .trk{display:flex;gap:26px;padding-right:26px;flex-shrink:0;align-items:center;animation:mq 40s linear infinite}
+.marq .ln2 .trk{animation-direction:reverse;animation-duration:50s}
+.marq .trk img{width:22px;height:22px;flex:none}
+@keyframes mq{to{transform:translateX(-100%)}}
+.badge{position:absolute;left:calc(100% + 28px);top:-6px;width:clamp(110px,11vw,150px);aspect-ratio:1;z-index:2;pointer-events:none}
+.badge svg{width:100%;height:100%;animation:spin 24s linear infinite}
+.badge img{position:absolute;left:50%;top:50%;width:58%;transform:translate(-50%,-50%) rotate(-14deg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.teal{position:relative}
+.teal .stripe{position:absolute;left:0;right:0;top:0;height:34px;background:url(img/decor/band_w.svg) repeat-x center/auto 24px;opacity:.55}
+.group{position:relative}
+.group::before{content:"";position:absolute;left:0;right:0;top:0;height:26px;background:url(img/decor/band_w.svg) repeat-x center/auto 18px;opacity:.5;z-index:1}
+footer{position:relative}
+footer::before{content:"";position:absolute;left:0;right:0;top:18px;height:34px;background:url(img/decor/band_w.svg) repeat-x center/auto 26px;opacity:.75}
+.stat::before{content:"";display:block;width:28px;height:28px;margin-bottom:14px;background:url(img/decor/rosette.svg) center/contain no-repeat}
+.mh{position:absolute;left:0;bottom:0;width:100%;height:clamp(90px,12vw,190px);pointer-events:none;z-index:0}
+.deco{position:absolute;pointer-events:none;z-index:0;will-change:transform}
+.deco i{display:block;width:100%;height:100%;background:center/contain no-repeat}
+.deco.fish{width:clamp(140px,15vw,230px);aspect-ratio:210/84}
+.deco.fish i{background-image:url(img/decor/trout.svg);animation:swim 3.6s ease-in-out infinite}
+.deco.fish.w i{background-image:url(img/decor/trout_w.svg)}
+.deco.fish::after{content:"";position:absolute;left:-16%;top:42%;width:34%;aspect-ratio:3/1;border-radius:50%;border:1.5px solid rgba(35,80,90,.3);animation:ripple 3.6s ease-out infinite}
+.deco.fish.w::after{border-color:rgba(255,255,255,.4)}
+.deco.leaf{width:clamp(26px,2.8vw,42px);aspect-ratio:48/100}
+.deco.leaf i{background-image:url(img/decor/leaf.svg);transform:rotate(var(--r,20deg));animation:sway 5.5s ease-in-out infinite}
+.deco.ros{width:clamp(150px,16vw,240px);aspect-ratio:1}
+.deco.ros i{background-image:url(img/decor/rosette.svg);opacity:.16}
+@keyframes swim{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-6px) rotate(1.5deg)}}
+@keyframes sway{0%,100%{transform:rotate(var(--r,20deg)) translateY(0)}50%{transform:rotate(calc(var(--r,20deg) + 14deg)) translateY(8px)}}
+@keyframes ripple{0%{transform:scale(.5);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+.sec{overflow-x:clip}
+.rm .marq .trk,.rm .badge svg,.rm .deco i,.rm .deco::after{animation:none}
+@media (max-width:1200px){.badge{left:auto;right:-10px;top:-96px;width:110px}}
+@media (max-width:860px){.badge{top:-84px;right:0;width:92px}.deco.hide-m{display:none}.deco.fish{width:120px}.marq{height:116px;margin-top:-20px}.marq .ln2{top:54px}}
 </style>
 </head>
 <body>
@@ -387,12 +430,14 @@ footer{background:var(--coral);color:#fff;border-radius:var(--R) var(--R) 0 0;ma
 </section>
 
 <div class="hills" aria-hidden="true"><svg id="hills" viewBox="0 0 1000 200" preserveAspectRatio="none"></svg></div>
+<div class="marq" aria-hidden="true"><div class="ln ln1"><div class="trk"><span>Міні-готель</span><img src="img/decor/rosette.svg" alt=""><span>Ставки з фореллю</span><img src="img/decor/rosette.svg" alt=""><span>Чан на травах</span><img src="img/decor/rosette.svg" alt=""><span>Листяний ліс</span><img src="img/decor/rosette.svg" alt=""><span>Свалява</span><img src="img/decor/rosette.svg" alt=""><span>6 номерів</span><img src="img/decor/rosette.svg" alt=""><span>Басейн з підігрівом</span><img src="img/decor/rosette.svg" alt=""></div><div class="trk"><span>Міні-готель</span><img src="img/decor/rosette.svg" alt=""><span>Ставки з фореллю</span><img src="img/decor/rosette.svg" alt=""><span>Чан на травах</span><img src="img/decor/rosette.svg" alt=""><span>Листяний ліс</span><img src="img/decor/rosette.svg" alt=""><span>Свалява</span><img src="img/decor/rosette.svg" alt=""><span>6 номерів</span><img src="img/decor/rosette.svg" alt=""><span>Басейн з підігрівом</span><img src="img/decor/rosette.svg" alt=""></div></div><div class="ln ln2"><div class="trk"><span>Тиша</span><img src="img/decor/rosette.svg" alt=""><span>Буковий ліс</span><img src="img/decor/rosette.svg" alt=""><span>Форель</span><img src="img/decor/rosette.svg" alt=""><span>Колиба</span><img src="img/decor/rosette.svg" alt=""><span>Закарпаття</span><img src="img/decor/rosette.svg" alt=""><span>Бювет</span><img src="img/decor/rosette.svg" alt=""><span>Альтанки</span><img src="img/decor/rosette.svg" alt=""></div><div class="trk"><span>Тиша</span><img src="img/decor/rosette.svg" alt=""><span>Буковий ліс</span><img src="img/decor/rosette.svg" alt=""><span>Форель</span><img src="img/decor/rosette.svg" alt=""><span>Колиба</span><img src="img/decor/rosette.svg" alt=""><span>Закарпаття</span><img src="img/decor/rosette.svg" alt=""><span>Бювет</span><img src="img/decor/rosette.svg" alt=""><span>Альтанки</span><img src="img/decor/rosette.svg" alt=""></div></div></div>
 
 <!-- ПРО ГОТЕЛЬ -->
 <section class="sec about" id="about" aria-labelledby="about-t" style="padding-top:clamp(40px,5vw,70px)">
+<div class="deco leaf hide-m" style="left:4%;top:4%;--r:-20deg" data-par="110" aria-hidden="true"><i></i></div><div class="deco leaf" style="right:6%;top:46%;--r:30deg" data-par="-80" aria-hidden="true"><i></i></div><div class="deco ros hide-m" style="left:-60px;bottom:22%" data-par="40" aria-hidden="true"><i></i></div>
   <svg class="trail" id="trail" aria-hidden="true"><path id="trailPath"/></svg>
   <div class="wrap">
-    <div class="about-head rv">
+    <div class="about-head rv" style="position:relative"><div class="badge" aria-hidden="true"><svg viewBox="0 0 160 160"><defs><path id="bc" d="M80 80m-62 0a62 62 0 1 1 124 0a62 62 0 1 1-124 0"/></defs><circle cx="80" cy="80" r="78" fill="#fff"/><text font-family="Unbounded,sans-serif" font-weight="700" font-size="12.2" letter-spacing="1.6" fill="#23505a"><textPath href="#bc" textLength="384" lengthAdjust="spacing">МІНІ-ГОТЕЛЬ · 6 НОМЕРІВ · СВАЛЯВА · ЗАКАРПАТТЯ ·</textPath></text></svg><img src="img/decor/trout.svg" alt=""></div>
       <span class="pre">Карпатська Форель</span>
       <h2 id="about-t">Тихий відпочинок <span class="c">біля води</span></h2>
       <p class="lead">Невеликий готель на північній околиці Сваляви: півтора гектара ставків, кам'яних доріжок і квітників. Гостей зустрічає господар, пан Євген.</p>
@@ -422,6 +467,7 @@ footer{background:var(--coral);color:#fff;border-radius:var(--R) var(--R) 0 0;ma
 
 <!-- НОМЕРИ -->
 <section class="sec" id="rooms" aria-labelledby="rooms-t" style="padding-top:0">
+<svg class="mh" data-hills viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true"></svg><div class="deco leaf hide-m" style="right:3%;top:2%;--r:24deg" data-par="100" aria-hidden="true"><i></i></div>
   <div class="wrap">
     <div class="rooms-head">
       <div class="rv"><span class="pre">Номери</span><h2 id="rooms-t">Наші <span class="c">номери</span></h2></div>
@@ -456,6 +502,7 @@ footer{background:var(--coral);color:#fff;border-radius:var(--R) var(--R) 0 0;ma
 
 <!-- ГАЛЕРЕЯ -->
 <section class="sec" id="gallery" aria-labelledby="gal-t" style="padding-top:0">
+<div class="deco leaf" style="left:3%;bottom:8%;--r:-28deg" data-par="90" aria-hidden="true"><i></i></div><div class="deco fish hide-m" style="left:5%;bottom:3%" data-swim="240" data-par="20" aria-hidden="true"><i></i></div>
   <div class="wrap gal">
     <div class="rv">
       <span class="pre">Галерея</span>
@@ -482,6 +529,7 @@ footer{background:var(--coral);color:#fff;border-radius:var(--R) var(--R) 0 0;ma
 
 <!-- НА ТЕРИТОРІЇ -->
 <section class="sec teal" id="territory" aria-labelledby="ter-t">
+<div class="stripe" aria-hidden="true"></div><div class="deco fish w" style="right:6%;top:84px" data-swim="300" data-par="24" aria-hidden="true"><i></i></div>
   <svg class="teal-hills" id="tealHills" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true"></svg>
   <div class="wrap">
     <span class="pre" style="color:#ffb394">На території</span>
@@ -498,6 +546,7 @@ footer{background:var(--coral);color:#fff;border-radius:var(--R) var(--R) 0 0;ma
 
 <!-- КУДИ ПОЇХАТИ -->
 <section class="sec" id="near" aria-labelledby="near-t">
+<div class="deco leaf" style="right:4%;top:6%;--r:18deg" data-par="100" aria-hidden="true"><i></i></div><div class="deco ros hide-m" style="right:-50px;bottom:-30px" data-par="30" aria-hidden="true"><i></i></div>
   <div class="wrap">
     <span class="pre rv">Поруч</span>
     <h2 id="near-t" class="rv d1">Куди поїхати <span class="c">на день</span></h2>
@@ -512,6 +561,7 @@ footer{background:var(--coral);color:#fff;border-radius:var(--R) var(--R) 0 0;ma
 
 <!-- ВІДГУКИ -->
 <section class="sec" id="reviews" aria-labelledby="rev-t" style="padding-top:0">
+<div class="deco leaf hide-m" style="left:2%;top:2%;--r:-14deg" data-par="80" aria-hidden="true"><i></i></div>
   <div class="wrap">
     <div class="rev-head">
       <div class="rv"><span class="pre">Відгуки</span><h2 id="rev-t">Що пишуть <span class="c">гості</span></h2></div>
@@ -531,6 +581,7 @@ footer{background:var(--coral);color:#fff;border-radius:var(--R) var(--R) 0 0;ma
 
 <!-- ЯК ЗНАЙТИ -->
 <section class="sec" id="find" aria-labelledby="find-t" style="padding-top:0">
+<svg class="mh" data-hills viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true"></svg><div class="deco fish" style="right:8%;top:6%" data-swim="260" data-par="20" aria-hidden="true"><i></i></div>
   <div class="wrap find">
     <div class="rv">
       <span class="pre">Як знайти</span>
@@ -617,6 +668,7 @@ footer{background:var(--coral);color:#fff;border-radius:var(--R) var(--R) 0 0;ma
       <p>Фото готелю: Google-картка «Карпатської Форелі», знімки власника і гостей.</p>
       <p>Стокові фото (Wikimedia Commons): тло першого екрана, осінь у НПП «Синевир», Rbrechko; туман, Byrdyak і Dmytro.ch; Боржава, Ottilov; Синевир, Cornelia Pavlyshyn; Квітка Полонини, Olga1969, усі CC BY-SA 4.0; Шипіт, Dmytro Petishkin, CC BY 4.0. Обрізано й зменшено. Лінія пагорбів під першим екраном: справжній профіль рельєфу від готелю до вершини Стій (SRTM).</p>
       <p>Номери й послуги: каталоги відпочинку. Відстані: OpenStreetMap. Оцінка й цитати: відгуки в Google станом на 05.10.2026.</p>
+      <p>Декор: мотиви закарпатської та бойківської вишивки (ромби, кривульки, восьмипелюсткова розетка), форель і буковий лист намальовані для прототипу.</p>
       <p>Прототип сайту, зібраний за відкритими даними. Це не офіційний сайт готелю.</p>
     </div>
   </div>
@@ -667,6 +719,11 @@ var mid=smooth(P.map(function(v,i){return v*.5+Math.cos(i/5)*70+300}),3);
 var front=smooth(P,1);
 $('#hills').innerHTML='<path d="'+layer(back,200,20,110)+'" fill="#dfe8df"/><path d="'+layer(mid,200,60,100)+'" fill="#d2ded4"/><path d="'+layer(front,200,70,120)+'" fill="'+getComputedStyle(document.body).backgroundColor+'"/>';
 $('#tealHills').innerHTML='<path d="'+layer(back,200,30,120)+'" fill="#ffffff" opacity=".35"/><path d="'+layer(front,200,80,110)+'" fill="#ffffff" opacity=".5"/>';
+
+/* туманні пагорби внизу секцій і декор на скролі */
+$$('[data-hills]').forEach(function(sv){sv.innerHTML='<path d="'+layer(back,200,40,120)+'" fill="#dfe8df" opacity=".75"/><path d="'+layer(mid,200,95,90)+'" fill="#d2ded4" opacity=".6"/>'});
+var decos=$$('.deco[data-par],.deco[data-swim]');
+if(!RM&&decos.length){(function dl(){var vh=innerHeight;decos.forEach(function(el){var r=el.parentNode.getBoundingClientRect();if(r.bottom<-300||r.top>vh+300)return;var p=(vh-r.top)/(vh+r.height),sp=+(el.dataset.par||0),sw=+(el.dataset.swim||0);el.style.transform='translate3d('+(sw*(.5-p)).toFixed(1)+'px,'+(sp*(.5-p)).toFixed(1)+'px,0)'});requestAnimationFrame(dl)})()}
 
 /* стежка між блоками «Про готель», малюється на скролі */
 var about=$('#about'), rows=$('#rows'), tp=$('#trailPath'), tlen=0;
