@@ -99,9 +99,8 @@ p{margin:0}
 @keyframes hint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 .hero.p1 .hero-hint{opacity:0}
 
-/* ПАНЕЛЬ БРОНЮВАННЯ (виїжджає знизу) */
-.dock{position:fixed;left:50%;bottom:clamp(14px,3vh,28px);z-index:45;width:min(960px,calc(100% - 28px));transform:translate(-50%,140%);transition:transform .9s var(--ease),opacity .6s var(--ease);opacity:0}
-.dock.on{transform:translate(-50%,0);opacity:1}
+/* ПАНЕЛЬ БРОНЮВАННЯ (завжди на місці) */
+.dock{position:fixed;left:50%;bottom:clamp(14px,3vh,28px);z-index:45;width:min(960px,calc(100% - 28px));transform:translateX(-50%)}
 .dock-in{background:rgba(255,253,248,.97);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-radius:26px;padding:16px 16px 16px 24px;box-shadow:0 30px 70px -26px rgba(10,20,12,.55),0 0 0 1px rgba(255,255,255,.6) inset;display:flex;align-items:center;gap:18px}
 .dock-t{font-family:var(--disp);font-size:1.15rem;font-weight:600;flex:none;max-width:13ch;line-height:1.15}
 .dock-f{display:flex;align-items:stretch;flex:1;gap:8px}
@@ -110,17 +109,9 @@ p{margin:0}
 .df span{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 .df b{font-size:15px;font-weight:800;white-space:nowrap}
 .dock .btn{flex:none}
-.dock-x{position:absolute;top:-12px;right:-6px;width:30px;height:30px;border-radius:50%;border:0;background:#fff;color:var(--ink);box-shadow:0 6px 16px -6px rgba(0,0,0,.4);cursor:pointer;font-size:18px;line-height:1}
-.dock-mini{display:none}
-.dock.mini .dock-in{display:none}
-.dock.mini .dock-mini{display:flex;justify-content:flex-end}
-.dock.mini{left:auto;right:clamp(14px,2vw,28px);width:auto;transform:none}
-.dock-mini a{display:none}
-.dock-mini a.main{display:inline-flex}
 @media (max-width:860px){
-  .dock{bottom:0;width:100%;}
-  .dock-in{border-radius:24px 24px 0 0;flex-direction:column;align-items:stretch;gap:12px;padding:12px 16px calc(16px + env(safe-area-inset-bottom))}
-  .dock-in::before{content:"";align-self:center;width:42px;height:4px;border-radius:9px;background:var(--bg2)}
+  .dock{bottom:0;width:100%}
+  .dock-in{border-radius:22px 22px 0 0;flex-direction:column;align-items:stretch;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
   .dock-t{display:none}
   .dock-f{flex-wrap:wrap;gap:6px}
   .df{flex:1 1 28%;padding:7px 10px;border-radius:14px}
@@ -128,12 +119,7 @@ p{margin:0}
   .df b{font-size:13px}
   .dock .btn{min-height:48px}
   .dock .btn{width:100%}
-  .dock-x{top:10px;right:12px;box-shadow:none;background:var(--bg)}
-  .dock.mini{left:0;right:0;bottom:0;width:100%}
-  .dock.mini .dock-mini{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:8px;background:rgba(255,253,248,.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:10px 12px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -1px 0 var(--line)}
-  .dock-mini a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;border-radius:999px;text-decoration:none;font-weight:800;font-size:14.5px;background:var(--bg);color:var(--ink)}
-  .dock-mini a.main{background:var(--coral);color:#fff}
-}
+        }
 @media (max-width:860px){.hero-txt{bottom:clamp(170px,24vh,210px)}.hero-txt p.sub{font-size:.98rem}.hero-cap{top:74px}}
 
 /* ШВИДКІ ФАКТИ */
@@ -671,7 +657,7 @@ footer a:hover{text-decoration:underline}
   </div>
 </footer>
 
-<!-- ПАНЕЛЬ БРОНЮВАННЯ: виїжджає знизу через 2,5 с -->
+<!-- ПАНЕЛЬ БРОНЮВАННЯ: завжди внизу екрана, однакова на всій сторінці -->
 <div class="dock" id="dock" role="region" aria-label="Швидке бронювання">
   <div class="dock-in">
     <p class="dock-t">Які дати вас цікавлять?</p>
@@ -681,9 +667,7 @@ footer a:hover{text-decoration:underline}
       <button class="df" type="button" data-go><span>Гості</span><b id="pG">2 дорослих</b></button>
       <a class="btn" href="#bron" data-go>Перевірити дати</a>
     </div>
-    <button class="dock-x" type="button" id="dockX" aria-label="Згорнути панель">×</button>
   </div>
-  <div class="dock-mini"><a href="tel:+380509256903">Дзвінок</a><a href="viber://chat?number=%2B380509256903">Viber</a><a class="main btn" href="#bron" data-go>Перевірити дати</a></div>
 </div>
 
 <!-- ГАЛЕРЕЯ НА ВЕСЬ ЕКРАН -->
@@ -730,17 +714,8 @@ var q=0;function batch(){var n=0;while(q<order.length&&n<6){if(!fr[order[q]])loa
 setTimeout(batch,300);
 addEventListener('resize',size);
 var tick=false;addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;draw();onScroll()})}},{passive:true});
-/* ---- шапка і панель бронювання ---- */
-var dock=document.getElementById('dock'), dockShown=false, dockClosed=false;
-function heroGone(){return hero.getBoundingClientRect().bottom<innerHeight*.6}
-function onScroll(){
-  hdr.classList.toggle('solid',scrollY>60);
-  if(!dockShown)return;
-  var mini=dockClosed||heroGone();
-  dock.classList.toggle('mini',mini);
-}
-setTimeout(function(){dockShown=true;dock.classList.add('on');onScroll()},2500);
-document.getElementById('dockX').addEventListener('click',function(){dockClosed=true;onScroll()});
+/* ---- шапка ---- */
+function onScroll(){hdr.classList.toggle('solid',scrollY>60)}
 onScroll();
 /* ---- поява блоків ---- */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
