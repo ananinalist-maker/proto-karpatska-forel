@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Карпатська Форель · приватна садиба у Сваляві</title>
+<meta name="description" content="Приватна садиба у Сваляві: басейн з підігрівом, власні ставки з фореллю, колиба і чан на карпатських травах. Бронювання напряму в господаря.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:title" content="Карпатська Форель · приватна садиба у Сваляві">
+<meta property="og:description" content="Басейн, ставки з фореллю, колиба і чан на травах. Бронювання напряму в господаря.">
+<meta property="og:image" content="img/og.jpg">
+<meta name="theme-color" content="#2a4f23">
+<link rel="icon" href="img/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="seq/d/f001.webp" media="(min-width:760px)">
+<link rel="preload" as="image" href="seq/m/f001.webp" media="(max-width:759px)">
+<style>
+:root{
+  --forest:#2a4f23;--forest2:#1f3b1a;--moss:#6b8a59;--leaf:#dfe8d6;
+  --cream:#f6f2e9;--paper:#fffdf8;--card:#fff;--bg:#f1ece1;--bg2:#e6dfcf;
+  --ink:#1d241b;--ink2:#3d4739;--mute:#6d7669;--line:rgba(29,36,27,.12);
+  --coral:#e2674a;--coral2:#c9553a;--pool:#3cb5c6;
+  --R:28px;--ease:cubic-bezier(.32,.72,0,1);
+  --disp:'Playfair Display',Georgia,serif;--sans:'Manrope',system-ui,sans-serif;
+  --pad:clamp(16px,4.5vw,64px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--disp);font-weight:600;line-height:1.08;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,4.6vw,3.6rem)}
+h3{font-size:clamp(1.25rem,2vw,1.6rem)}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.pre{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--moss)}
+.pre::before{content:"";width:22px;height:1.5px;background:currentColor}
+.lead{font-size:clamp(1.02rem,1.4vw,1.15rem);color:var(--ink2);max-width:58ch}
+.small{font-size:12.5px;color:var(--mute)}
+.sec{padding:clamp(72px,10vw,140px) 0;position:relative}
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,52px)}
+.sec-h .lead{margin-top:14px}
+.it{font-style:italic;color:var(--forest)}
+/* кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:0;border-radius:999px;background:var(--coral);color:#fff;font-family:var(--sans);font-weight:800;font-size:14.5px;letter-spacing:.01em;text-decoration:none;cursor:pointer;white-space:nowrap;box-shadow:0 14px 30px -16px rgba(226,103,74,.8);transition:transform .5s var(--ease),background-color .4s var(--ease)}
+.btn:hover{background:var(--coral2);transform:translateY(-2px)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:16px;height:16px}
+.btn.white{background:#fff;color:var(--ink);box-shadow:0 14px 30px -18px rgba(0,0,0,.4)}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn.line:hover{background:var(--ink);color:#fff}
+.btn.green{background:var(--forest);box-shadow:0 14px 30px -16px rgba(42,79,35,.7)}
+.btn.green:hover{background:var(--forest2)}
+:focus-visible{outline:2.5px solid var(--coral);outline-offset:3px}
+/* поява */
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* ШАПКА */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:40;transition:background-color .5s var(--ease),box-shadow .5s var(--ease),padding .5s var(--ease)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:78px}
+.logo{display:block;width:118px;height:auto;flex:none}
+.logo img{width:100%}
+.logo .g{display:none}
+.nav{display:flex;gap:26px;font-weight:700;font-size:14.5px}
+.nav a{text-decoration:none;color:#fff;opacity:.92;transition:opacity .3s}
+.nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}
+.hdr .btn{min-height:44px;padding:0 20px;font-size:14px}
+.hdr-ph{color:#fff;text-decoration:none;font-weight:800;font-size:14.5px}
+.hdr-r{display:flex;align-items:center;gap:18px}
+.hdr.solid{background:rgba(246,242,233,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.hdr.solid .nav a,.hdr.solid .hdr-ph{color:var(--ink)}
+.hdr.solid .logo .w{display:none}.hdr.solid .logo .g{display:block}
+@media (max-width:980px){.nav{display:none}}
+@media (max-width:600px){.hdr .wrap{height:64px}.logo{width:96px}.hdr-ph{display:none}.hdr .btn{display:none}}
+
+/* ХИРО */
+.hero{position:relative;height:250vh;background:#0f1a10}
+.hero-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#film{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,20,12,.45) 0%,rgba(10,20,12,0) 20%,rgba(10,20,12,0) 42%,rgba(10,20,12,.7) 100%),linear-gradient(90deg,rgba(10,20,12,.5) 0%,rgba(10,20,12,.18) 42%,rgba(10,20,12,0) 62%);pointer-events:none}
+.hero-txt{position:absolute;left:0;right:0;bottom:clamp(150px,22vh,220px);color:#fff;pointer-events:none}
+.hero-txt .pre{color:#fff;opacity:.9}
+.hero-txt h1{font-size:clamp(3rem,8.6vw,7.4rem);margin:14px 0 16px;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+.hero-txt p.sub{max-width:44ch;font-size:clamp(1rem,1.5vw,1.2rem);font-weight:500;opacity:.95;text-shadow:0 1px 14px rgba(0,0,0,.35)}
+.hero-txt .two-state{transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.hero-txt .s2{position:absolute;left:var(--pad);right:var(--pad);bottom:0;opacity:0;transform:translateY(18px)}
+.hero.p2 .s1{opacity:0;transform:translateY(-18px)}
+.hero.p2 .s2{opacity:1;transform:none}
+.s2 h2{font-size:clamp(2rem,5vw,4.2rem);max-width:16ch;text-shadow:0 2px 30px rgba(0,0,0,.3)}
+.hero-cap{position:absolute;right:var(--pad);top:96px;color:#fff;font-size:11.5px;opacity:.75;text-align:right;max-width:30ch}
+.hero-hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75;display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .5s}
+.hero-hint i{width:1.5px;height:34px;background:linear-gradient(#fff,rgba(255,255,255,0));animation:hint 2.2s var(--ease) infinite}
+@keyframes hint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero.p1 .hero-hint{opacity:0}
+
+/* ПАНЕЛЬ БРОНЮВАННЯ (виїжджає знизу) */
+.dock{position:fixed;left:50%;bottom:clamp(14px,3vh,28px);z-index:45;width:min(960px,calc(100% - 28px));transform:translate(-50%,140%);transition:transform .9s var(--ease),opacity .6s var(--ease);opacity:0}
+.dock.on{transform:translate(-50%,0);opacity:1}
+.dock-in{background:rgba(255,253,248,.97);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-radius:26px;padding:16px 16px 16px 24px;box-shadow:0 30px 70px -26px rgba(10,20,12,.55),0 0 0 1px rgba(255,255,255,.6) inset;display:flex;align-items:center;gap:18px}
+.dock-t{font-family:var(--disp);font-size:1.15rem;font-weight:600;flex:none;max-width:13ch;line-height:1.15}
+.dock-f{display:flex;align-items:stretch;flex:1;gap:8px}
+.df{flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;border:0;background:var(--bg);border-radius:16px;padding:9px 16px;cursor:pointer;text-align:left;font-family:var(--sans);color:var(--ink);transition:background-color .3s}
+.df:hover{background:var(--bg2)}
+.df span{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.df b{font-size:15px;font-weight:800;white-space:nowrap}
+.dock .btn{flex:none}
+.dock-x{position:absolute;top:-12px;right:-6px;width:30px;height:30px;border-radius:50%;border:0;background:#fff;color:var(--ink);box-shadow:0 6px 16px -6px rgba(0,0,0,.4);cursor:pointer;font-size:18px;line-height:1}
+.dock-mini{display:none}
+.dock.mini .dock-in{display:none}
+.dock.mini .dock-mini{display:flex;justify-content:flex-end}
+.dock.mini{left:auto;right:clamp(14px,2vw,28px);width:auto;transform:none}
+.dock-mini a{display:none}
+.dock-mini a.main{display:inline-flex}
+@media (max-width:860px){
+  .dock{bottom:0;width:100%;}
+  .dock-in{border-radius:24px 24px 0 0;flex-direction:column;align-items:stretch;gap:12px;padding:12px 16px calc(16px + env(safe-area-inset-bottom))}
+  .dock-in::before{content:"";align-self:center;width:42px;height:4px;border-radius:9px;background:var(--bg2)}
+  .dock-t{display:none}
+  .dock-f{flex-wrap:wrap;gap:6px}
+  .df{flex:1 1 28%;padding:7px 10px;border-radius:14px}
+  .df span{font-size:10px}
+  .df b{font-size:13px}
+  .dock .btn{min-height:48px}
+  .dock .btn{width:100%}
+  .dock-x{top:10px;right:12px;box-shadow:none;background:var(--bg)}
+  .dock.mini{left:0;right:0;bottom:0;width:100%}
+  .dock.mini .dock-mini{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:8px;background:rgba(255,253,248,.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:10px 12px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -1px 0 var(--line)}
+  .dock-mini a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;border-radius:999px;text-decoration:none;font-weight:800;font-size:14.5px;background:var(--bg);color:var(--ink)}
+  .dock-mini a.main{background:var(--coral);color:#fff}
+}
+@media (max-width:860px){.hero-txt{bottom:clamp(170px,24vh,210px)}.hero-txt p.sub{font-size:.98rem}.hero-cap{top:74px}}
+
+/* ШВИДКІ ФАКТИ */
+.facts{background:var(--paper);border-bottom:1px solid var(--line)}
+.facts .wrap{display:flex;gap:10px 28px;flex-wrap:wrap;align-items:center;padding-top:22px;padding-bottom:22px;font-weight:700;font-size:14.5px;color:var(--ink2)}
+.facts span{display:inline-flex;align-items:center;gap:9px}
+.facts svg{width:20px;height:20px;color:var(--forest);flex:none}
+
+/* ГАЛЕРЕЯ-МОЗАЇКА */
+.mosaic{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:repeat(2,minmax(150px,260px));gap:10px;border-radius:var(--R);overflow:hidden;position:relative}
+.mosaic button{border:0;padding:0;cursor:zoom-in;background:#ddd;overflow:hidden;position:relative}
+.mosaic button:first-child{grid-row:span 2}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.mosaic button:hover img{transform:scale(1.04)}
+.mosaic .all{position:absolute;left:16px;bottom:16px;z-index:2;min-height:46px}
+@media (max-width:760px){.mosaic{grid-template-columns:1fr 1fr;grid-template-rows:220px 130px 130px}.mosaic button:first-child{grid-column:span 2;grid-row:auto}.mosaic button:nth-child(n+6){display:none}}
+.gal-note{margin-top:14px}
+
+/* ЛАЙТБОКС */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(15,22,14,.96);display:none;flex-direction:column}
+.lb.on{display:flex}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:16px var(--pad);color:#fff}
+.lb-top b{font-family:var(--disp);font-size:1.3rem;font-weight:600}
+.lb-x{width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:22px;cursor:pointer}
+.lb-grid{flex:1;overflow:auto;padding:0 var(--pad) 40px;columns:3 300px;column-gap:10px}
+.lb-grid button{display:block;width:100%;margin:0 0 10px;border:0;padding:0;background:none;cursor:zoom-in;border-radius:14px;overflow:hidden;break-inside:avoid}
+.lb-view{position:absolute;inset:0;background:rgba(10,14,10,.98);display:none;align-items:center;justify-content:center}
+.lb-view.on{display:flex}
+.lb-view img{max-width:92vw;max-height:84vh;border-radius:12px;object-fit:contain}
+.lb-view .nv{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:24px;cursor:pointer}
+.lb-view .pv{left:2vw}.lb-view .nx{right:2vw}
+.lb-view .cl{position:absolute;top:16px;right:var(--pad)}
+
+/* ПРО САДИБУ + ЩО ТУТ Є */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.about-img{position:relative;border-radius:var(--R);overflow:hidden;aspect-ratio:4/5}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-img .tag{position:absolute;left:16px;bottom:16px;background:rgba(255,253,248,.94);border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:800}
+.about h2{margin:16px 0 18px}
+.about .lead+.lead{margin-top:14px}
+.logo-big{width:150px;margin-bottom:18px}
+@media (max-width:860px){.about{grid-template-columns:1fr}.about-img{aspect-ratio:4/3}}
+.amen{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(50px,7vw,90px)}
+.am{background:var(--card);border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -48px rgba(29,36,27,.5);display:flex;flex-direction:column}
+.am .ph{aspect-ratio:16/10;overflow:hidden}
+.am .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.am:hover .ph img{transform:scale(1.05)}
+.am .tx{padding:20px 22px 24px}
+.am h3{font-size:1.35rem;margin-bottom:8px}
+.am p{color:var(--ink2);font-size:15px}
+@media (max-width:900px){.amen{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.amen{grid-template-columns:1fr}}
+
+/* НОМЕРИ */
+.rooms{display:grid;gap:18px}
+.room{display:grid;grid-template-columns:1.05fr 1fr;background:var(--card);border-radius:var(--R);overflow:hidden;box-shadow:0 40px 80px -60px rgba(29,36,27,.55)}
+.rslider{position:relative;min-height:320px;background:#ddd}
+.rtrack{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.rtrack::-webkit-scrollbar{display:none}
+.rtrack img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start}
+.rnav{position:absolute;bottom:14px;right:14px;display:flex;gap:6px}
+.rnav button{width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,253,248,.92);cursor:pointer;font-size:18px;display:grid;place-items:center}
+.rbody{padding:clamp(22px,3vw,40px);display:flex;flex-direction:column}
+.rbody h3{font-size:clamp(1.5rem,2.4vw,2rem);margin:10px 0 12px}
+.rmeta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.rmeta span{background:var(--leaf);color:var(--forest);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:800}
+.rlist{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:7px;color:var(--ink2);font-size:15px}
+.rlist li{display:flex;gap:10px}
+.rlist li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--moss);margin-top:9px;flex:none}
+.rfoot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:18px;border-top:1px solid var(--line)}
+.rfoot .pr{font-size:14px;color:var(--mute);font-weight:600}
+.rfoot .pr b{display:block;color:var(--ink);font-size:16px}
+@media (max-width:860px){.room{grid-template-columns:1fr}.rslider{aspect-ratio:4/3;min-height:0}}
+
+/* РИБОЛОВЛЯ Й КОЛИБА */
+.fish{background:var(--forest);color:#fff;border-radius:var(--R);margin:0 12px;overflow:hidden}
+.fish .pre{color:#bcd3ad}
+.fish .lead{color:rgba(255,255,255,.86)}
+.fish-g{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.fish h2{margin:16px 0 18px}
+.fish-ph{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fish-ph img{border-radius:18px;width:100%;height:100%;object-fit:cover;aspect-ratio:3/4}
+.fish-ph img:first-child{grid-row:span 2;aspect-ratio:auto}
+.steps{display:grid;gap:12px;margin:26px 0}
+.stp{display:flex;gap:16px;align-items:flex-start}
+.stp i{font-style:normal;font-family:var(--disp);font-size:1.6rem;color:#f3b49f;line-height:1;min-width:30px}
+.stp b{display:block;font-size:16.5px}
+.stp span{color:rgba(255,255,255,.78);font-size:14.5px}
+.quote{margin-top:28px;padding:20px 22px;border-radius:20px;background:rgba(255,255,255,.08);font-family:var(--disp);font-style:italic;font-size:1.15rem;line-height:1.45}
+.quote small{display:block;margin-top:10px;font-family:var(--sans);font-style:normal;font-size:13px;color:rgba(255,255,255,.7)}
+.menu-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.menu-row span{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:700}
+@media (max-width:900px){.fish-g{grid-template-columns:1fr}}
+
+/* ЧАН І БАСЕЙН */
+.eve{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.eve-c{position:relative;border-radius:var(--R);overflow:hidden;min-height:440px;color:#fff;display:flex;align-items:flex-end}
+.eve-c img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
+.eve-c:hover img{transform:scale(1.04)}
+.eve-c::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.66))}
+.eve-c .tx{position:relative;z-index:1;padding:26px}
+.eve-c h3{font-size:clamp(1.6rem,2.6vw,2.2rem);margin-bottom:8px}
+.eve-c p{max-width:40ch;opacity:.92}
+@media (max-width:820px){.eve{grid-template-columns:1fr}.eve-c{min-height:380px}}
+
+/* ДІТИ, СОБАКИ, СЕЗОНИ */
+.kids-g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.kc{background:var(--card);border-radius:24px;padding:14px 14px 22px;box-shadow:0 30px 60px -48px rgba(29,36,27,.5)}
+.kc img{border-radius:16px;aspect-ratio:4/3;object-fit:cover;width:100%;margin-bottom:16px}
+.kc h3{font-size:1.25rem;margin:0 8px 6px}
+.kc p{margin:0 8px;color:var(--ink2);font-size:15px}
+@media (max-width:820px){.kids-g{grid-template-columns:1fr}}
+.ny{display:grid;grid-template-columns:1.2fr 1fr;border-radius:var(--R);overflow:hidden;background:#20302a;color:#fff;margin-top:clamp(40px,6vw,70px)}
+.ny-ph{position:relative;min-height:340px}
+.ny-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ny-tx{padding:clamp(26px,4vw,50px);display:flex;flex-direction:column;justify-content:center;gap:16px}
+.ny-tx .pre{color:#b9d0e0}
+.ny-tx p{color:rgba(255,255,255,.85)}
+@media (max-width:820px){.ny{grid-template-columns:1fr}.ny-ph{min-height:240px}}
+
+/* ВІДГУКИ */
+.revs{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px var(--pad) 26px;margin:0 calc(var(--pad)*-1);scrollbar-width:thin}
+.rc{flex:0 0 min(380px,82vw);scroll-snap-align:start;background:var(--card);border-radius:24px;padding:24px 24px 22px;box-shadow:0 30px 60px -50px rgba(29,36,27,.55);display:flex;flex-direction:column;gap:16px}
+.rc .st{color:#e3a72f;letter-spacing:2px;font-size:15px}
+.rc p{font-family:var(--disp);font-size:1.12rem;line-height:1.5}
+.rc .who{margin-top:auto;display:flex;align-items:center;gap:12px;font-size:14px}
+.rc .av{width:40px;height:40px;border-radius:50%;background:var(--leaf);color:var(--forest);display:grid;place-items:center;font-weight:800;flex:none}
+.rc .who b{display:block}
+.rc .who small{color:var(--mute)}
+.rarr{display:flex;gap:8px}
+.rarr button{width:48px;height:48px;border-radius:50%;border:0;background:var(--card);cursor:pointer;font-size:18px;box-shadow:0 8px 20px -12px rgba(0,0,0,.35)}
+
+/* БРОНЮВАННЯ (форма з v4) */
+#bron{background:var(--bg2);border-radius:var(--R);margin:0 12px}
+.book-l h2{margin:16px 0 14px}
+.book{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,5vw,80px);align-items:start}
+.book-l{position:sticky;top:110px}
+.host{display:flex;align-items:center;gap:14px;margin-top:24px;padding:14px;border-radius:24px;background:var(--card)}
+.host .av{width:50px;height:50px;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font-family:var(--disp);font-weight:800;flex:none}
+.host p{margin:0;font-size:14px;color:var(--ink2)}
+.host b{display:block;color:var(--ink);font-weight:800}
+.form{background:var(--card);border-radius:var(--R);padding:clamp(20px,3vw,36px);box-shadow:0 40px 80px -50px rgba(29,41,37,.5)}
+.fgroup{padding:20px 0;border-bottom:1px solid var(--line)}
+.fgroup:first-child{padding-top:0}
+.flabel{display:block;font-family:var(--disp);font-weight:700;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:12px}
+.flabel em{font-family:var(--sans);text-transform:none;letter-spacing:0;font-style:normal;color:var(--mute);font-weight:600}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:0;padding:10px 16px;border-radius:999px;background:var(--bg);color:var(--ink2);cursor:pointer;font-size:14px;font-weight:700;transition:background-color .4s var(--ease),color .4s var(--ease)}
+.seg button:hover{background:var(--bg2)}
+.seg button[aria-pressed="true"]{background:var(--coral);color:#fff}
+.guests{display:flex;gap:28px;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:14px}
+.step .t{min-width:62px;font-weight:700}
+.step button{width:42px;height:42px;border-radius:50%;border:0;background:var(--bg);cursor:pointer;font-size:19px;line-height:1;font-weight:700}
+.step output{min-width:20px;text-align:center;font-weight:800;font-size:17px}
+.kids{margin-top:14px;display:none}.kids.on{display:block}
+.inp{width:100%;padding:14px 18px;border-radius:16px;border:0;background:var(--bg);color:var(--ink);font-size:16px;font-weight:600}
+.inp::placeholder{color:var(--mute);font-weight:500}
+.inp:focus{outline:0;box-shadow:inset 0 0 0 2px var(--coral)}
+.cap-hint{margin:10px 0 0;font-size:14px;color:var(--coral);font-weight:700;display:none}.cap-hint.on{display:block}
+.cal-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-top .navb{display:flex;gap:6px}
+.cal-top .navb button{width:42px;height:42px;border-radius:50%;border:0;background:var(--bg);cursor:pointer;display:grid;place-items:center}
+.cal-top .navb button:disabled{opacity:.35;cursor:default}
+.cal-top .navb svg{width:16px;height:16px}
+#cal{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.cal-h{font-family:var(--disp);font-weight:700;font-size:13px;text-transform:uppercase;margin-bottom:10px}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-w{font-size:11px;font-weight:700;color:var(--mute);text-align:center;padding:4px 0}
+.cal-d{aspect-ratio:1;border:0;border-radius:12px;background:transparent;color:var(--ink);cursor:pointer;font-size:14px;font-weight:600}
+.cal-d:hover:not(:disabled){background:var(--bg)}
+.cal-d:disabled{color:#c3cbc6;cursor:default}
+.cal-d.full{color:#c3cbc6;text-decoration:line-through}
+.cal-d.full.can-out{color:var(--ink2);text-decoration:none}
+.cal-d.s-in{background:#ffe3d7;border-radius:4px}
+.cal-d.s-a,.cal-d.s-b{background:var(--coral);color:#fff;font-weight:800}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;font-weight:600;color:var(--mute)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:11px;height:11px;border-radius:4px;background:var(--bg2)}
+.legend i.b{background:transparent;box-shadow:inset 0 0 0 1.5px #c3cbc6}
+.legend i.s{background:var(--coral)}
+.cal-sum{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;padding:14px 18px;border-radius:16px;background:var(--bg);font-size:15px;font-weight:700;flex-wrap:wrap}
+.cal-sum button{border:0;background:none;color:var(--coral);cursor:pointer;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.chk{display:flex;gap:14px;align-items:flex-start;padding:10px 0;cursor:pointer}
+.chk input{position:absolute;opacity:0;pointer-events:none}
+.chk .box{width:24px;height:24px;border-radius:8px;flex:none;box-shadow:inset 0 0 0 2px #c3cbc6;display:grid;place-items:center;margin-top:1px;transition:background-color .3s var(--ease)}
+.chk .box svg{width:14px;height:14px;opacity:0}
+.chk input:checked+.box{background:var(--coral);box-shadow:none}
+.chk input:checked+.box svg{opacity:1}
+.chk input:focus-visible+.box{outline:2.5px solid var(--coral);outline-offset:3px}
+.chk b{display:block;font-weight:800}
+.chk small{display:block;color:var(--mute);font-size:13.5px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.submit-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:22px}
+.submit-row .small{flex-basis:100%}
+.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:rgba(29,41,37,.45);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
+.modal.on{opacity:1;visibility:visible}
+.modal .box2{max-width:440px;width:100%;background:#fff;border-radius:var(--R);padding:26px;transform:translateY(30px);transition:transform .7s var(--ease)}
+.modal.on .box2{transform:none}
+.modal h3{margin:8px 0 8px;font-size:18px}
+.vb{margin:18px 0;border-radius:20px;background:#e9e6f4;padding:14px}
+.vb .hd{font-size:13px;color:#5b4a96;font-weight:800;margin-bottom:8px}
+.vb .msg{background:#fff;border-radius:16px 16px 16px 6px;padding:13px 15px;font-size:14px;line-height:1.5;white-space:pre-line;color:#222}
+
+
+.flabel{font-family:var(--sans)!important;font-weight:800!important}
+.cal-h{font-family:var(--disp)!important;text-transform:none!important;font-size:16px!important}
+.form .btn{font-family:var(--sans)}
+@media (max-width:900px){.book{grid-template-columns:1fr}.book-l{position:static}}
+@media (max-width:520px){.two{grid-template-columns:1fr}}
+
+/* ЯК ДОЇХАТИ + ПИТАННЯ */
+.way{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.map{border-radius:var(--R);overflow:hidden;position:relative;display:block}
+.map img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.map .btn{position:absolute;left:16px;bottom:16px}
+.dist{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+.dist li{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px;font-weight:600}
+.dist li b{font-weight:800}
+@media (max-width:860px){.way{grid-template-columns:1fr}}
+.faq{max-width:860px}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font-family:var(--disp);font-size:1.25rem;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--sans);font-weight:500;font-size:1.6rem;line-height:1;color:var(--forest);transition:transform .4s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin-top:12px;color:var(--ink2);max-width:66ch}
+
+/* ФУТЕР */
+footer{background:var(--forest2);color:#fff;margin-top:clamp(60px,8vw,110px);padding:clamp(60px,8vw,100px) 0 calc(110px + env(safe-area-inset-bottom))}
+.f-g{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:34px}
+.f-logo{width:170px}
+footer h4{margin:0 0 12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#bcd3ad}
+footer p,footer a{color:rgba(255,255,255,.88);text-decoration:none}
+footer a:hover{text-decoration:underline}
+.f-note{margin-top:46px;padding-top:22px;border-top:1px solid rgba(255,255,255,.15);font-size:12.5px;color:rgba(255,255,255,.6)}
+@media (max-width:820px){.f-g{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Карпатська Форель, на початок"><img class="w" src="img/logo-mark-white.png" alt="Карпатська Форель, приватна садиба"><img class="g" src="img/logo-mark.png" alt=""></a>
+    <nav class="nav" aria-label="Розділи"><a href="#rooms">Номери</a><a href="#about">Що тут є</a><a href="#fish">Риболовля й колиба</a><a href="#reviews">Відгуки</a><a href="#way">Як доїхати</a></nav>
+    <div class="hdr-r"><a class="hdr-ph" href="tel:+380509256903">050 925 69 03</a><a class="btn" href="#bron" data-go>Забронювати</a></div>
+  </div>
+</header>
+
+<main>
+<!-- ХИРО: фото з Booking, яке гості пам'ятають, оживає на прокрутці -->
+<section class="hero" id="top" aria-label="Карпатська Форель">
+  <div class="hero-stick">
+    <canvas id="film" aria-hidden="true"></canvas>
+    <div class="hero-shade"></div>
+    <p class="hero-cap">Прототип. Відео створене з головного фото готелю.</p>
+    <div class="hero-txt">
+      <div class="wrap" style="position:relative">
+        <div class="two-state s1">
+          <span class="pre">Приватна садиба · Свалява, Закарпаття</span>
+          <h1>Карпатська Форель</h1>
+          <p class="sub">Басейн з підігрівом, власні ставки з фореллю і чан на карпатських травах. Бронювання напряму в господаря.</p>
+        </div>
+        <div class="two-state s2"><h2>Шість номерів, сад і тиша за 1,5 га від міської метушні</h2></div>
+      </div>
+    </div>
+    <div class="hero-hint" aria-hidden="true">Гортайте<i></i></div>
+  </div>
+</section>
+
+<div class="facts"><div class="wrap">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 12 4l9 7v9H3z"/><path d="M9 20v-6h6v6"/></svg>6 номерів, 14 місць</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 17c2 0 2-1.5 4-1.5S8 17 10 17s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M7 13V5a2 2 0 0 1 4 0M13 13V5a2 2 0 0 1 4 0M7 9h10"/></svg>Басейн з підігрівом</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12c3-4 8-6 13-4l4-3-1 5 1 5-4-3c-5 2-10 0-13-4z"/><circle cx="7.5" cy="11" r=".8" fill="currentColor"/></svg>Ставки з фореллю</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16l-1.5 7h-13z"/><path d="M8 9c0-2 2-2 2-4M12 9c0-2 2-2 2-4M16 9c0-2 2-2 2-4"/></svg>Чан на травах</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 20V10l7-6 7 6v10"/><path d="M3 20h18M10 20v-5h4v5"/></svg>Колиба</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 7a2 2 0 1 0 0-.01M16 7a2 2 0 1 0 0-.01M5 12a2 2 0 1 0 0-.01M19 12a2 2 0 1 0 0-.01"/><path d="M12 12c-3 0-5 4-4 6s3 1 4 1 3 1 4-1-1-6-4-6z"/></svg>Можна з собакою</span>
+</div></div>
+
+<!-- ГАЛЕРЕЯ -->
+<section class="sec" style="padding-bottom:clamp(40px,5vw,60px)">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <div><span class="pre">Фото садиби</span><h2 style="margin-top:14px">Подивіться <span class="it">навколо</span></h2></div>
+    </div>
+    <div class="mosaic rv" id="mosaic">
+      <button type="button" data-i="0"><img src="img/g-pool.webp" alt="Корпус готелю, басейн і шезлонги"></button>
+      <button type="button" data-i="1"><img src="img/g-roses.webp" alt="Троянди, газон і гори" loading="lazy"></button>
+      <button type="button" data-i="2"><img src="img/g-kolyba-in.webp" alt="Зал колиби" loading="lazy"></button>
+      <button type="button" data-i="3"><img src="img/g-pond-firs.webp" alt="Ставок з альтанкою" loading="lazy"></button>
+      <button type="button" data-i="4"><img src="img/g-pool-night.webp" alt="Басейн увечері з підсвіткою" loading="lazy"></button>
+      <button type="button" class="btn white all" id="openAll">Показати всі фото</button>
+    </div>
+  </div>
+</section>
+
+<!-- ПРО САДИБУ + ЩО ТУТ Є -->
+<section class="sec" id="about" style="padding-top:clamp(40px,5vw,70px)">
+  <div class="wrap">
+    <div class="about">
+      <div class="rv">
+        <img class="logo-big" src="img/logo-mark.png" alt="">
+        <span class="pre">Про садибу</span>
+        <h2>Сад, ставки й тиша <span class="it">на 1,5 гектара</span></h2>
+        <p class="lead">«Карпатська Форель» це приватна садиба у Сваляві. Шість номерів з терасами, басейн, колиба і ставки, де можна зловити форель собі на вечерю.</p>
+        <p class="lead">Гості пишуть, що тут тихо, чисто і видно гори. Господар поруч, коли потрібен, і не заважає, коли хочеться відпочити.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:26px"><a class="btn green" href="#rooms">Подивитися номери</a><a class="btn line" href="viber://chat?number=%2B380509256903">Написати у Viber</a></div>
+      </div>
+      <div class="about-img rv d1"><img src="img/g-house.webp" alt="Будинок садиби серед туй" loading="lazy"><span class="tag">Фото господаря, літо</span></div>
+    </div>
+
+    <div class="amen">
+      <article class="am rv"><div class="ph"><img src="img/g-ponds-houses.webp" alt="Ставки з будиночками" loading="lazy"></div><div class="tx"><h3>Ставки з фореллю й коропом</h3><p>Вудки дадуть на місці, а спійману рибу приготують у колибі.</p></div></article>
+      <article class="am rv d1"><div class="ph"><img src="img/g-chan.webp" alt="Чан з парою" loading="lazy"></div><div class="tx"><h3>Чан на карпатських травах</h3><p>Гаряча вода на відварі трав. Воду гріють заздалегідь, тож скажіть про чан під час бронювання.</p></div></article>
+      <article class="am rv d2"><div class="ph"><img src="img/g-pool-night.webp" alt="Басейн з підсвіткою" loading="lazy"></div><div class="tx"><h3>Басейн з підігрівом</h3><p>Поруч шезлонги, а ввечері вода світиться синім.</p></div></article>
+      <article class="am rv"><div class="ph"><img src="img/g-kolyba-out.webp" alt="Колиба біля ставка" loading="lazy"></div><div class="tx"><h3>Колиба</h3><p>Закарпатська й угорська кухня просто на території. Є зал для свят і банкетів.</p></div></article>
+      <article class="am rv d1"><div class="ph"><img src="img/g-gazebo.webp" alt="Альтанки з мангалом" loading="lazy"></div><div class="tx"><h3>Альтанки з мангалом</h3><p>П'ять альтанок, щоб посмажити шашлик своєю компанією.</p></div></article>
+      <article class="am rv d2"><div class="ph"><img src="img/g-deer.webp" alt="Косуля в міні-зоопарку" loading="lazy"></div><div class="tx"><h3>Міні-зоопарк</h3><p>Косулі й кролики. Діти тут зависають надовго.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- НОМЕРИ -->
+<section class="sec" id="rooms" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <div><span class="pre">Номери</span><h2 style="margin-top:14px">Оберіть <span class="it">номер</span></h2><p class="lead">У кожному номері санвузол з душем, телевізор, Wi‑Fi і тераса. Заїзд з 14:00, виїзд до 12:00.</p></div>
+    </div>
+    <div class="rooms">
+      <article class="room rv">
+        <div class="rslider"><div class="rtrack"><img src="img/r-sd1.webp" alt="Стандарт з окремими ліжками" loading="lazy"><img src="img/r-sd2.webp" alt="Стандарт з двоспальним ліжком" loading="lazy"><img src="img/r-sd3.webp" alt="Санвузол" loading="lazy"></div><div class="rnav"><button type="button" data-d="-1" aria-label="Попереднє фото">‹</button><button type="button" data-d="1" aria-label="Наступне фото">›</button></div></div>
+        <div class="rbody">
+          <span class="pre">2 номери</span>
+          <h3>Стандарт</h3>
+          <div class="rmeta"><span>16 м²</span><span>до 2 гостей</span><span>тераса</span></div>
+          <ul class="rlist"><li>Двоспальне ліжко або два окремі, як вам зручніше</li><li>Телевізор, чайник, Wi‑Fi</li><li>Власний санвузол з душем і феном</li></ul>
+          <div class="rfoot"><p class="pr"><b>Ціна на ваші дати</b>назве господар у відповідь на заявку</p><button class="btn" type="button" data-room="sd">Перевірити дати</button></div>
+        </div>
+      </article>
+      <article class="room rv">
+        <div class="rslider"><div class="rtrack"><img src="img/r-fm1.webp" alt="Сімейний номер" loading="lazy"><img src="img/r-fm2.webp" alt="Кухонний куточок" loading="lazy"><img src="img/r-fm3.webp" alt="Санвузол" loading="lazy"></div><div class="rnav"><button type="button" data-d="-1" aria-label="Попереднє фото">‹</button><button type="button" data-d="1" aria-label="Наступне фото">›</button></div></div>
+        <div class="rbody">
+          <span class="pre">2 номери</span>
+          <h3>Сімейний з кухнею</h3>
+          <div class="rmeta"><span>40 м²</span><span>до 2 гостей</span><span>окремий вхід</span></div>
+          <ul class="rlist"><li>Двоспальне ліжко</li><li>Кухонний куточок: плита, міні-холодильник, чайник</li><li>Тераса й окремий вхід</li></ul>
+          <div class="rfoot"><p class="pr"><b>Ціна на ваші дати</b>назве господар у відповідь на заявку</p><button class="btn" type="button" data-room="fm">Перевірити дати</button></div>
+        </div>
+      </article>
+      <article class="room rv">
+        <div class="rslider"><div class="rtrack"><img src="img/r-lx1.webp" alt="Люкс сімейний" loading="lazy"><img src="img/r-lx2.webp" alt="Друга спальня" loading="lazy"><img src="img/r-lx3.webp" alt="Кухня" loading="lazy"></div><div class="rnav"><button type="button" data-d="-1" aria-label="Попереднє фото">‹</button><button type="button" data-d="1" aria-label="Наступне фото">›</button></div></div>
+        <div class="rbody">
+          <span class="pre">2 номери</span>
+          <h3>Люкс сімейний</h3>
+          <div class="rmeta"><span>40 м²</span><span>до 4 гостей</span><span>дві спальні</span></div>
+          <ul class="rlist"><li>Дві спальні з двоспальними ліжками</li><li>Кухня, щоб готувати самим</li><li>Окремий вхід на першому поверсі й літня тераса</li></ul>
+          <div class="rfoot"><p class="pr"><b>Ціна на ваші дати</b>назве господар у відповідь на заявку</p><button class="btn" type="button" data-room="lx" data-group="4">Перевірити дати</button></div>
+        </div>
+      </article>
+    </div>
+    <p class="small" style="margin-top:16px">У прототипі фото номерів з вашої галереї, підписи умовні. У робочій версії підпишемо кожен номер точно.</p>
+  </div>
+</section>
+
+<!-- РИБОЛОВЛЯ Й КОЛИБА -->
+<section class="sec fish" id="fish">
+  <div class="wrap fish-g">
+    <div class="rv">
+      <span class="pre">Риболовля й колиба</span>
+      <h2>Зловіть форель, <span class="it" style="color:#f3b49f">а шеф її приготує</span></h2>
+      <p class="lead">Своя форель і короп у ставках на території. Можна просто посидіти з вудкою, а можна замовити улов на вечерю.</p>
+      <div class="steps">
+        <div class="stp"><i>1</i><div><b>Берете вудку</b><span>Вудки й відро дадуть на місці.</span></div></div>
+        <div class="stp"><i>2</i><div><b>Ловите у ставку</b><span>Вода в ставках чиста й прозора.</span></div></div>
+        <div class="stp"><i>3</i><div><b>Шеф готує улов</b><span>За фірмовим рецептом або так, як попросите.</span></div></div>
+      </div>
+      <div class="menu-row"><span>Форель-гриль</span><span>Бограч</span><span>Закарпатська кухня</span><span>Угорська кухня</span></div>
+      <p class="quote">«Заклад знаходиться в такій місцевості, де вода в озерах прозоро чиста і насичена киснем.»<small>Федір Шандор, огляд «ТОП-10 форелевих господарств Закарпаття»</small></p>
+    </div>
+    <div class="fish-ph rv d1">
+      <img src="img/g-trout.webp" alt="Форель-гриль з овочами" loading="lazy">
+      <img src="img/g-hall.webp" alt="Зал колиби" loading="lazy">
+      <img src="img/g-dish2.webp" alt="Страва з форелі" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ЧАН І БАСЕЙН -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-h rv"><div><span class="pre">Вечір у садибі</span><h2 style="margin-top:14px">Чан, басейн <span class="it">і зорі</span></h2></div></div>
+    <div class="eve">
+      <div class="eve-c rv"><img src="img/g-chan.webp" alt="Чан на травах з парою" loading="lazy"><div class="tx"><h3>Чан на травах</h3><p>«Ввечері ми вже грілися в теплій воді на відварі карпатських трав». Позначте чан у заявці, і його нагріють до вашого приїзду.</p><button class="btn white" type="button" id="addChan" style="margin-top:16px">Хочу з чаном</button></div></div>
+      <div class="eve-c rv d1"><img src="img/g-pool-night.webp" alt="Басейн увечері" loading="lazy"><div class="tx"><h3>Басейн з підігрівом</h3><p>Влітку відкритий басейн з шезлонгами, увечері з підсвіткою.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ДІТИ, СОБАКИ, СЕЗОНИ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h rv"><div><span class="pre">З дітьми й улюбленцями</span><h2 style="margin-top:14px">Місце є <span class="it">для всіх</span></h2></div></div>
+    <div class="kids-g">
+      <div class="kc rv"><img src="img/g-play.webp" alt="Дитячий майданчик" loading="lazy"><h3>Дитячий майданчик</h3><p>Гірка, гойдалки й батут на великій зеленій території.</p></div>
+      <div class="kc rv d1"><img src="img/g-deer.webp" alt="Косуля" loading="lazy"><h3>Косулі поруч</h3><p>У міні-зоопарку живуть косулі й кролики.</p></div>
+      <div class="kc rv d2"><img src="img/g-territory.webp" alt="Територія для прогулянок" loading="lazy"><h3>Можна з собакою</h3><p>За попереднім запитом. Територія велика, є де погуляти.</p></div>
+    </div>
+    <div class="ny rv">
+      <div class="ny-ph"><img src="img/g-winter.webp" alt="Садиба взимку" loading="lazy"></div>
+      <div class="ny-tx">
+        <span class="pre">Новий рік у садибі</span>
+        <h2 style="font-size:clamp(1.8rem,3.4vw,2.8rem)">Свята в горах, чан на морозі</h2>
+        <p>Новорічні дати краще бронювати заздалегідь. Залиште заявку, і господар скаже, що вільно.</p>
+        <div><a class="btn" href="#bron" data-go>Дізнатися про вільні дати</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ВІДГУКИ -->
+<section class="sec" id="reviews" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <div><span class="pre">Відгуки з Google</span><h2 style="margin-top:14px">Що пишуть <span class="it">гості</span></h2></div>
+      <div class="rarr"><button type="button" data-rv="-1" aria-label="Попередні відгуки">‹</button><button type="button" data-rv="1" aria-label="Наступні відгуки">›</button></div>
+    </div>
+    <div class="revs" id="revs">
+      <article class="rc"><span class="st" aria-label="5 з 5">★★★★★</span><p>«Це райський закуточок для відпочинку: там тиша і комфорт… Гостинний господар, який не напрошується з розмовами, але охоче спілкується за вашим бажанням.»</p><div class="who"><span class="av">Н</span><div><b>Надежда Р.</b><small>Google</small></div></div></article>
+      <article class="rc"><span class="st" aria-label="5 з 5">★★★★★</span><p>«Радушні власники готелю, вміють організувати все найкращим чином: гарний відпочинок, смачні сніданки, завжди чистий басейн, номер чистий, рушники міняють.»</p><div class="who"><span class="av">Л</span><div><b>Лариса К.</b><small>Google</small></div></div></article>
+      <article class="rc"><span class="st" aria-label="5 з 5">★★★★★</span><p>«Охайна велика територія і шикарний вид на гори… Приємно, що територію не забудували, а залишили вид на гори.»</p><div class="who"><span class="av">С</span><div><b>Сергій Л.</b><small>Google</small></div></div></article>
+      <article class="rc"><span class="st" aria-label="5 з 5">★★★★★</span><p>«Рекомендую це місце всім хто хоче відпочити від міського галасу в тиші та насолодитися красою гір лежачи в гамаках...»</p><div class="who"><span class="av">Т</span><div><b>Тетяна О.</b><small>Google</small></div></div></article>
+      <article class="rc"><span class="st" aria-label="5 з 5">★★★★★</span><p>«Номер чистий, охайний, затишний і дуже теплий:) … Ще великий плюс, що можна зі своїм улюбленцем»</p><div class="who"><span class="av">А</span><div><b>Анастасія</b><small>Google</small></div></div></article>
+      <article class="rc"><span class="st" aria-label="5 з 5">★★★★★</span><p>«Ввечері ми вже грілися в теплій воді на відварі карпатських трав»</p><div class="who"><span class="av">Т</span><div><b>Татьяна И.</b><small>Google</small></div></div></article>
+      <article class="rc"><span class="st" aria-label="5 з 5">★★★★★</span><p>«А ще є чан з травами, як ритуал для тіла і душі!»</p><div class="who"><span class="av">Н</span><div><b>Наталія Д.</b><small>Google</small></div></div></article>
+      <article class="rc"><span class="st" aria-label="5 з 5">★★★★★</span><p>«Відпочивали сім'єю у Карпатській Форелі вперше, двоє дорослих та двоє діток. Нам все сподобалося!»</p><div class="who"><span class="av">Н</span><div><b>Ната Г.</b><small>Google</small></div></div></article>
+      <article class="rc"><span class="st" aria-label="5 з 5">★★★★★</span><p>«Тиша і територія, для прогулянок з таксою Буся, були основною вимогою при виборі.»</p><div class="who"><span class="av">А</span><div><b>Андрей Г.</b><small>Google</small></div></div></article>
+    </div>
+    <p class="small">Цитати дослівно, деякі скорочено.</p>
+  </div>
+</section>
+
+<!-- БРОНЮВАННЯ -->
+<section class="sec" id="bron" aria-labelledby="book-t" style="margin-top:clamp(40px,6vw,80px)">
+  <div class="wrap book">
+    <div class="book-l rv">
+      <span class="pre">Бронювання напряму</span>
+      <h2 id="book-t">Оберіть <span class="it">дати</span></h2>
+      <p class="lead">Заявка одразу прийде пану Євгену. Він назве ціну на ваші дати і зв'яжеться з вами так, як вам зручно.</p>
+      <div class="host"><span class="av">Є</span><p><b>Пан Євген, господар</b>050 925 69 03 · дзвінок або Viber</p></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><a class="btn white" href="viber://chat?number=%2B380509256903">Viber</a><a class="btn white" href="tel:+380509256903">Подзвонити</a></div>
+    </div>
+    <form class="form rv d1" id="bookForm" novalidate>
+      <div class="fgroup">
+        <span class="flabel" id="lbType">Що бронюєте</span>
+        <div class="seg" id="segType" role="group" aria-labelledby="lbType"><button type="button" data-v="any" aria-pressed="true">Будь-який номер</button><button type="button" data-v="lx" aria-pressed="false">Люкс сімейний</button><button type="button" data-v="fm" aria-pressed="false">Сімейний з кухнею</button><button type="button" data-v="sd" aria-pressed="false">Стандарт</button></div>
+      </div>
+      <div class="fgroup">
+        <span class="flabel">Гості</span>
+        <div class="guests">
+          <div class="step"><span class="t">Дорослі</span><button type="button" data-g="ad" data-d="-1" aria-label="Менше дорослих">−</button><output id="oAd">2</output><button type="button" data-g="ad" data-d="1" aria-label="Більше дорослих">+</button></div>
+          <div class="step"><span class="t">Діти</span><button type="button" data-g="ch" data-d="-1" aria-label="Менше дітей">−</button><output id="oCh">0</output><button type="button" data-g="ch" data-d="1" aria-label="Більше дітей">+</button></div>
+        </div>
+        <div class="kids" id="kids"><label class="flabel" for="kAge" style="margin:4px 0 8px">Вік дітей <em>необов'язково</em></label><input class="inp" id="kAge" placeholder="Наприклад: 4 і 9 років"></div>
+        <p class="cap-hint" id="capHint"></p>
+      </div>
+      <div class="fgroup">
+        <div class="cal-top"><span class="flabel" style="margin:0">Заїзд і виїзд</span><div class="navb"><button type="button" id="calPrev" aria-label="Попередній місяць"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button><button type="button" id="calNext" aria-label="Наступний місяць"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button></div></div>
+        <div id="cal"></div>
+        <div class="legend"><span><i></i>вільно</span><span><i class="b"></i>зайнято</span><span><i class="s"></i>ваші дати</span></div>
+        <div class="cal-sum"><span id="calSum" aria-live="polite">Оберіть дату заїзду.</span><button type="button" id="calReset">Скинути дати</button></div>
+        <p class="small" style="margin:12px 0 0">У прототипі дати умовні. У робочій версії календар показує справжню зайнятість, яку веде господар.</p>
+        <label class="chk"><input type="checkbox" id="noDates"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.4"><path d="m3 7 3 3 5-6"/></svg></span><span><b>Дати ще точно не знаю</b><small>Господар підкаже найближчі вільні.</small></span></label>
+      </div>
+      <div class="fgroup">
+        <label class="chk"><input type="checkbox" id="xChan"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.4"><path d="m3 7 3 3 5-6"/></svg></span><span><b>Хочемо чан на травах</b><small>на один із вечорів</small></span></label>
+        <label class="chk"><input type="checkbox" id="xTrain"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.4"><path d="m3 7 3 3 5-6"/></svg></span><span><b>Хочемо порибалити</b><small>щоб приготували вудки</small></span></label>
+      </div>
+      <div class="fgroup" style="border-bottom:0">
+        <div class="two">
+          <div><label class="flabel" for="fName">Ім'я</label><input class="inp" id="fName" autocomplete="given-name" placeholder="Як до вас звертатися"></div>
+          <div><span class="flabel" id="lbHow">Як зв'язатися?</span><div class="seg" id="segHow" role="group" aria-labelledby="lbHow"><button type="button" data-v="call" aria-pressed="false">Дзвінок</button><button type="button" data-v="viber" aria-pressed="true">Viber</button><button type="button" data-v="tg" aria-pressed="false">Telegram</button><button type="button" data-v="wa" aria-pressed="false">WhatsApp</button></div></div>
+        </div>
+        <label class="flabel" for="fPhone" id="lbPhone" style="margin-top:16px">Номер у Viber</label>
+        <input class="inp" id="fPhone" inputmode="tel" autocomplete="tel" placeholder="+380">
+        <label class="flabel" for="fNote" style="margin-top:16px">Коментар <em>якщо потрібно</em></label>
+        <input class="inp" id="fNote" placeholder="Приїдемо пізно ввечері, з нами собака...">
+      </div>
+      <div class="submit-row">
+        <button class="btn" type="submit">Надіслати заявку</button>
+        <button class="btn line" type="button" id="toViber">Написати у Viber</button>
+        <p class="small">Кнопка «Написати у Viber» скопіює текст заявки з датами, лишиться вставити його в чат.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ЯК ДОЇХАТИ -->
+<section class="sec" id="way">
+  <div class="wrap way">
+    <a class="map rv" href="https://www.google.com/maps/search/?api=1&amp;query=48.5591711%2C22.9709056" target="_blank" rel="noopener"><img src="img/map.webp" alt="Карта: садиба на околиці Сваляви" loading="lazy"><span class="btn white">Відкрити в Google Maps</span></a>
+    <div class="rv d1">
+      <span class="pre">Як доїхати</span>
+      <h2 style="margin:14px 0 14px">Свалява, <span class="it">вул. Шепентала, 3В</span></h2>
+      <p class="lead">Безкоштовна парковка на території. Напишіть, коли виїжджаєте, і господар підкаже дорогу.</p>
+      <ul class="dist"><li>Поляна <b>8 км</b></li><li>Мукачево <b>30 км</b></li><li>Ужгород <b>70 км</b></li><li>Львів <b>200 км</b></li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ПИТАННЯ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <span class="pre rv">Питання</span>
+    <h2 class="rv" style="margin:14px 0 20px">Що зазвичай <span class="it">питають</span></h2>
+    <div class="faq rv">
+      <details><summary>О котрій заїзд і виїзд?</summary><p>Заїзд з 14:00, виїзд до 12:00. Якщо приїдете раніше чи пізніше, напишіть господарю.</p></details>
+      <details><summary>Скільки коштує проживання?</summary><p>Ціна залежить від номера, дат і кількості гостей. Залиште заявку, і господар назве точну суму на ваші дати.</p></details>
+      <details><summary>Чи можна з собакою?</summary><p>Так, за попереднім запитом. Напишіть у заявці, яка у вас собака.</p></details>
+      <details><summary>Як замовити чан?</summary><p>Позначте «Хочемо чан на травах» у заявці. Воду гріють заздалегідь, тож краще сказати про чан наперед.</p></details>
+      <details><summary>Чи можна порибалити?</summary><p>Так, у ставках на території є форель і короп. Вудки дадуть, а улов приготують у колибі.</p></details>
+      <details><summary>Чи є харчування?</summary><p>Є сніданки, а колиба на території готує закарпатську й угорську кухню.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-g">
+      <div><img class="f-logo" src="img/logo-mark-white.png" alt="Карпатська Форель, приватна садиба"></div>
+      <div><h4>Зв'язок</h4><p><a href="tel:+380509256903">050 925 69 03</a> · основний</p><p><a href="tel:+380681021918">068 102 19 18</a> · додатковий</p><p style="margin-top:8px"><a href="viber://chat?number=%2B380509256903">Viber</a> · <a href="#bron">Заявка на дати</a></p></div>
+      <div><h4>Адреса</h4><p>вул. Шепентала, 3В<br>Свалява, Закарпатська область</p></div>
+    </div>
+    <p class="f-note">Прототип сайту. Фото з галерей садиби, відгуки гостей з Google. Відео на першому екрані створене з головного фото готелю.</p>
+  </div>
+</footer>
+
+<!-- ПАНЕЛЬ БРОНЮВАННЯ: виїжджає знизу через 2,5 с -->
+<div class="dock" id="dock" role="region" aria-label="Швидке бронювання">
+  <div class="dock-in">
+    <p class="dock-t">Які дати вас цікавлять?</p>
+    <div class="dock-f">
+      <button class="df" type="button" data-go><span>Заїзд</span><b id="pIn">Оберіть дату</b></button>
+      <button class="df" type="button" data-go><span>Виїзд</span><b id="pOut">Оберіть дату</b></button>
+      <button class="df" type="button" data-go><span>Гості</span><b id="pG">2 дорослих</b></button>
+      <a class="btn" href="#bron" data-go>Перевірити дати</a>
+    </div>
+    <button class="dock-x" type="button" id="dockX" aria-label="Згорнути панель">×</button>
+  </div>
+  <div class="dock-mini"><a href="tel:+380509256903">Дзвінок</a><a href="viber://chat?number=%2B380509256903">Viber</a><a class="main btn" href="#bron" data-go>Перевірити дати</a></div>
+</div>
+
+<!-- ГАЛЕРЕЯ НА ВЕСЬ ЕКРАН -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Усі фото">
+  <div class="lb-top"><b>Фото садиби</b><button class="lb-x" type="button" id="lbX" aria-label="Закрити">×</button></div>
+  <div class="lb-grid" id="lbGrid"></div>
+  <div class="lb-view" id="lbView"><img id="lbImg" alt=""><button class="nv pv" type="button" id="lbPrev" aria-label="Попереднє">‹</button><button class="nv nx" type="button" id="lbNext" aria-label="Наступне">›</button><button class="lb-x cl" type="button" id="lbBack" aria-label="До всіх фото">×</button></div>
+</div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mT">
+  <div class="box2">
+    <span class="pre">Прототип</span>
+    <h3 id="mT">Так виглядатиме заявка у вашому Viber</h3>
+    <p class="small">Це демо, тож заявку нікуди не надіслано. У робочій версії заявка одразу прийде вам.</p>
+    <div class="vb"><div class="hd">Нова заявка з сайту</div><div class="msg" id="mMsg"></div></div>
+    <button class="btn" type="button" id="mClose">Змінити заявку</button>
+  </div>
+</div>
+
+<script type="application/json" id="demoAvail">{"updated_at": "2026-10-10T16:00:00+03:00", "source": "demo", "rooms": {"lx1": {"busy": [["2026-10-16", "2026-10-18"], ["2026-10-30", "2026-11-02"], ["2026-11-20", "2026-11-22"], ["2026-12-24", "2026-12-27"], ["2026-12-29", "2027-01-05"]]}, "fm1": {"busy": [["2026-10-09", "2026-10-11"], ["2026-10-16", "2026-10-18"], ["2026-10-30", "2026-11-02"], ["2026-11-20", "2026-11-22"], ["2026-12-30", "2027-01-03"]]}, "fm2": {"busy": [["2026-10-10", "2026-10-12"], ["2026-10-17", "2026-10-19"], ["2026-11-13", "2026-11-16"], ["2026-12-04", "2026-12-06"], ["2026-12-29", "2027-01-04"]]}, "sd1": {"busy": [["2026-10-09", "2026-10-11"], ["2026-10-16", "2026-10-19"], ["2026-10-31", "2026-11-02"], ["2026-11-27", "2026-11-30"], ["2026-12-30", "2027-01-02"]]}, "sd2": {"busy": [["2026-10-10", "2026-10-12"], ["2026-10-23", "2026-10-25"], ["2026-11-14", "2026-11-16"], ["2026-12-18", "2026-12-20"], ["2026-12-31", "2027-01-03"]]}, "lx2": {"busy": [["2026-10-08", "2026-10-11"], ["2026-10-24", "2026-10-26"], ["2026-11-06", "2026-11-08"], ["2026-12-11", "2026-12-13"], ["2026-12-30", "2027-01-05"]]}}}</script>
+<script>
+(function(){
+'use strict';
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var hdr=document.getElementById('hdr'), hero=document.getElementById('top');
+/* ---- кінострічка на прокрутці ---- */
+var cv=document.getElementById('film'), cx=cv.getContext('2d');
+var N=96, mob=innerWidth<760, dir=mob?'seq/m/':'seq/d/', fr=new Array(N), cur=-1;
+function pad(i){return ('00'+(i+1)).slice(-3)}
+function size(){var d=Math.min(devicePixelRatio||1,2);cv.width=Math.round(cv.clientWidth*d);cv.height=Math.round(cv.clientHeight*d);cur=-1;draw()}
+function near(i){for(var k=0;k<N;k++){if(fr[i-k]&&fr[i-k].complete&&fr[i-k].naturalWidth)return fr[i-k];if(fr[i+k]&&fr[i+k].complete&&fr[i+k].naturalWidth)return fr[i+k]}return null}
+function prog(){var r=hero.getBoundingClientRect();var h=hero.offsetHeight-innerHeight;return h>0?Math.min(1,Math.max(0,-r.top/h)):0}
+function draw(){
+  var p=prog(), i=Math.round(p*(N-1)), im=near(i);
+  hero.classList.toggle('p1',p>.04);hero.classList.toggle('p2',p>.55);
+  if(!im||i===cur&&im===fr[i])return;cur=i;
+  var W=cv.width,H=cv.height,s=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*s,h=im.naturalHeight*s;
+  cx.drawImage(im,(W-w)/2,(H-h)/2,w,h);
+}
+function load(i,cb){var im=new Image();im.decoding='async';im.onload=function(){if(cb)cb();if(Math.abs(i-Math.round(prog()*(N-1)))<3)draw()};im.src=dir+'f'+pad(i)+'.webp';fr[i]=im}
+load(0,function(){size()});
+var order=[];for(var s=8;s>=1;s=s>>1){for(var j=0;j<N;j+=s)if(order.indexOf(j)<0)order.push(j)}
+var q=0;function batch(){var n=0;while(q<order.length&&n<6){if(!fr[order[q]])load(order[q]);q++;n++}if(q<order.length)setTimeout(batch,RM?400:120)}
+setTimeout(batch,300);
+addEventListener('resize',size);
+var tick=false;addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;draw();onScroll()})}},{passive:true});
+/* ---- шапка і панель бронювання ---- */
+var dock=document.getElementById('dock'), dockShown=false, dockClosed=false;
+function heroGone(){return hero.getBoundingClientRect().bottom<innerHeight*.6}
+function onScroll(){
+  hdr.classList.toggle('solid',scrollY>60);
+  if(!dockShown)return;
+  var mini=dockClosed||heroGone();
+  dock.classList.toggle('mini',mini);
+}
+setTimeout(function(){dockShown=true;dock.classList.add('on');onScroll()},2500);
+document.getElementById('dockX').addEventListener('click',function(){dockClosed=true;onScroll()});
+onScroll();
+/* ---- поява блоків ---- */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+/* ---- слайдери номерів ---- */
+document.querySelectorAll('.rslider').forEach(function(sl){var tr=sl.querySelector('.rtrack');sl.querySelectorAll('[data-d]').forEach(function(b){b.addEventListener('click',function(){tr.scrollBy({left:+b.dataset.d*tr.clientWidth,behavior:RM?'auto':'smooth'})})})});
+/* ---- відгуки ---- */
+var rv=document.getElementById('revs');document.querySelectorAll('[data-rv]').forEach(function(b){b.addEventListener('click',function(){rv.scrollBy({left:+b.dataset.rv*Math.min(400,rv.clientWidth*.85),behavior:RM?'auto':'smooth'})})});
+/* ---- усі фото ---- */
+var G=[['g-pool','Корпус, басейн і шезлонги'],['g-roses','Троянди й гори'],['g-kolyba-in','Зал колиби'],['g-pond-firs','Ставок з альтанкою'],['g-pool-night','Басейн увечері'],['g-house','Будинок серед туй'],['g-ponds-houses','Ставки'],['g-trout','Форель-гриль'],['g-chan','Чан на травах'],['g-sunset','Ставок на заході сонця'],['g-pond-statue','Ставок зі статуєю'],['g-room','Номер'],['g-bath','Санвузол'],['g-gazebo','Альтанки з мангалом'],['g-deer','Косуля'],['g-play','Дитячий майданчик'],['g-kolyba-out','Колиба'],['g-hall','Зал для свят'],['g-dish2','Страва з форелі'],['g-winter','Садиба взимку'],['g-chan-winter','Чан узимку'],['g-territory','Територія'],['g-flowers','Квіти й віз'],['g-terrace','Тераси номерів']];
+var lb=document.getElementById('lb'),grid=document.getElementById('lbGrid'),view=document.getElementById('lbView'),lbImg=document.getElementById('lbImg'),gi=0,last=null;
+grid.innerHTML=G.map(function(g,i){return '<button type="button" data-i="'+i+'"><img src="img/'+g[0]+'.webp" alt="'+g[1]+'" loading="lazy"></button>'}).join('');
+function openLb(i){last=document.activeElement;lb.classList.add('on');document.body.style.overflow='hidden';if(i!=null)show(i);else document.getElementById('lbX').focus()}
+function closeLb(){lb.classList.remove('on');view.classList.remove('on');document.body.style.overflow='';if(last)last.focus()}
+function show(i){gi=(i+G.length)%G.length;lbImg.src='img/'+G[gi][0]+'.webp';lbImg.alt=G[gi][1];view.classList.add('on');document.getElementById('lbBack').focus()}
+document.getElementById('openAll').addEventListener('click',function(e){e.stopPropagation();openLb(null)});
+document.querySelectorAll('#mosaic button[data-i]').forEach(function(b){b.addEventListener('click',function(){openLb(+b.dataset.i)})});
+grid.addEventListener('click',function(e){var b=e.target.closest('button[data-i]');if(b)show(+b.dataset.i)});
+document.getElementById('lbX').addEventListener('click',closeLb);
+document.getElementById('lbBack').addEventListener('click',function(){view.classList.remove('on')});
+document.getElementById('lbPrev').addEventListener('click',function(){show(gi-1)});
+document.getElementById('lbNext').addEventListener('click',function(){show(gi+1)});
+addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape'){view.classList.contains('on')?view.classList.remove('on'):closeLb()}if(view.classList.contains('on')){if(e.key==='ArrowLeft')show(gi-1);if(e.key==='ArrowRight')show(gi+1)}});
+})();
+</script>
+<script src="bron.js"></script>
+</body>
+</html>
