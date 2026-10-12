@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="seq/d/f001.webp" media="(min-width:760px)">
-<link rel="preload" as="image" href="seq/m/f001.webp" media="(max-width:759px)">
+<link rel="preload" as="image" href="seq/p/f001.webp" media="(max-width:759px)">
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "LodgingBusiness", "name": "Карпатська Форель", "description": "Приватна садиба у Сваляві: басейн з підігрівом, власні ставки з фореллю й коропом, колиба, чан на карпатських травах.", "telephone": "+380509256903", "address": {"@type": "PostalAddress", "streetAddress": "вул. Шепентала, 3В", "addressLocality": "Свалява", "addressRegion": "Закарпатська область", "addressCountry": "UA"}, "geo": {"@type": "GeoCoordinates", "latitude": 48.5591711, "longitude": 22.9709056}, "checkinTime": "14:00", "checkoutTime": "12:00", "petsAllowed": true, "numberOfRooms": 6, "priceRange": "1600-2800 UAH", "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": "Басейн з підігрівом", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Ставки з фореллю й коропом", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Колиба", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Чан на травах", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Альтанки з мангалом", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Міні-зоопарк", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Дитячий майданчик", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Безкоштовна парковка", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Wi-Fi", "value": true}]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Скільки коштує проживання?", "acceptedAnswer": {"@type": "Answer", "text": "Двомісні номери 1600 грн за ніч на двох, апартаменти з кухнею 1800 грн, трикімнатні апартаменти на чотирьох 2800 грн. Сніданок входить у ціну."}}, {"@type": "Question", "name": "О котрій заїзд і виїзд?", "acceptedAnswer": {"@type": "Answer", "text": "Заїзд з 14:00, виїзд до 12:00."}}, {"@type": "Question", "name": "Чи можна з собакою?", "acceptedAnswer": {"@type": "Answer", "text": "Так, за попереднім запитом."}}, {"@type": "Question", "name": "Як замовити чан?", "acceptedAnswer": {"@type": "Answer", "text": "Позначте чан у заявці. Воду гріють заздалегідь, тож краще сказати про чан наперед."}}, {"@type": "Question", "name": "Чи можна порибалити?", "acceptedAnswer": {"@type": "Answer", "text": "Так, у ставках на території є форель і короп. Вудки дадуть, а улов приготують у колибі."}}, {"@type": "Question", "name": "Чи є харчування?", "acceptedAnswer": {"@type": "Answer", "text": "Сніданок входить у вартість проживання. Колиба на території готує закарпатську й угорську кухню."}}, {"@type": "Question", "name": "Чи підходить садиба для відпочинку з дітьми?", "acceptedAnswer": {"@type": "Answer", "text": "Так. Є дитячий майданчик, міні-зоопарк з косулями й кроликами, басейн з підігрівом і трикімнатні апартаменти на 4 гостей з двома спальнями."}}, {"@type": "Question", "name": "Чи є парковка?", "acceptedAnswer": {"@type": "Answer", "text": "Так, безкоштовна парковка на території."}}, {"@type": "Question", "name": "Де знаходиться садиба?", "acceptedAnswer": {"@type": "Answer", "text": "Свалява, вул. Шепентала, 3В, Закарпатська область."}}]}]</script>
 <style>
 :root{
@@ -556,6 +556,47 @@ footer.ft{background:var(--dark);color:var(--cream);padding:34px var(--px) 120px
   html{scroll-behavior:auto}
 }
 
+/* 12.10: віконце броні внизу першого екрана (формат, який обрав Євген) */
+.hbook{position:absolute;left:var(--px);right:var(--px);bottom:24px;z-index:4;display:grid;grid-template-columns:1fr 1fr .85fr .85fr auto;gap:8px;padding:10px;border-radius:24px;background:rgba(247,243,238,.95);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 20px 44px -20px rgba(20,15,13,.6);color:var(--ink)}
+.hb-f{min-width:0;text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:9px 14px;font:inherit;color:inherit}
+button.hb-f{cursor:pointer}
+button.hb-f:hover{border-color:var(--bronze)}
+.hb-f>span{display:block;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.hb-f b{display:flex;align-items:center;gap:7px;margin-top:3px;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden}
+.hb-f b i{font-style:normal;overflow:hidden;text-overflow:ellipsis}
+.cal-ic{width:15px;height:15px;flex:none;color:var(--bronze)}
+.hb-st{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:2px}
+.hb-st button{width:28px;height:28px;border-radius:50%;border:1px solid rgba(33,29,28,.22);background:transparent;color:var(--dark);font-size:16px;line-height:1;cursor:pointer}
+.hb-st button:hover{background:var(--sand2)}
+.hb-st output{font-weight:600;font-size:15px;min-width:16px;text-align:center}
+.hbook .hb-go{min-height:auto;align-self:stretch;padding:0 24px;border-radius:16px;background:var(--bronze);color:#fff}
+.hbook .hb-go:hover{background:var(--bronze2)}
+.hs{bottom:clamp(150px,21vh,200px)}
+.hint{bottom:132px}
+.st-fade{display:none}
+.dock{animation:none;transition:opacity .45s var(--e),transform .45s var(--e)}
+body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
+@media (max-width:1100px){.hbook{grid-template-columns:1fr 1fr 1fr 1fr}.hbook .hb-go{grid-column:1/-1;min-height:46px}.hs{bottom:clamp(200px,27vh,240px)}.hint{bottom:190px}}
+@media (max-width:760px){
+  .hero{height:230vh}
+  .stage{background:var(--dark)}
+  #film{height:74.6vw;bottom:auto}
+  .st-scrim{background:linear-gradient(180deg,rgba(20,15,13,.55) 0,rgba(20,15,13,0) 80px)}
+  .st-fade{display:block;position:absolute;left:0;right:0;top:calc(74.6vw - 56px);height:57px;background:linear-gradient(180deg,rgba(33,29,28,0),var(--dark))}
+  .hs{top:calc(74.6vw + 10px);bottom:auto;left:18px;right:18px}
+  .hs h1,.hs h2{margin-top:10px;font-size:clamp(30px,9vw,42px)}
+  .hs .big{font-size:clamp(54px,17vw,80px)}
+  .hs p.t{margin-top:10px;font-size:14.5px;line-height:1.5}
+  .hs .cta{display:none}
+  .hint{top:calc(74.6vw - 40px);bottom:auto;left:16px;transform:none;font-size:11px}
+  .hero-note{top:70px}
+  .hbook{left:10px;right:10px;bottom:10px;grid-template-columns:1fr 1fr;gap:6px;padding:8px;border-radius:20px}
+  .hb-f{padding:7px 11px;border-radius:13px}
+  .hb-f b{font-size:13px}
+  .hbook .hb-go{min-height:46px;font-size:11px}
+}
+.hs .cta .btn.gl{display:none}
+
 </style>
 <!-- GA4: вставити тег тут -->
 <!-- Meta Pixel: вставити тут -->
@@ -604,6 +645,14 @@ footer.ft{background:var(--dark);color:var(--cream);padding:34px var(--px) 120px
       <div class="cta fade f2"><a class="btn gl" href="#bron" data-go>Перевірити вільні дати</a><a class="btn ghost" href="viber://chat?number=%2B380509256903">Написати у Viber</a></div>
     </div>
     <ol class="hp" aria-label="Прокрутка першого екрана"><li><button class="on" type="button" data-to="0"><b>01</b><i></i>День</button></li><li><button type="button" data-to="1"><b>02</b><i></i>Вечір</button></li></ol>
+    <div class="st-fade" aria-hidden="true"></div>
+    <div class="hbook" id="hbook" role="group" aria-label="Перевірити вільні дати">
+      <button class="hb-f" type="button" data-go><span>Заїзд</span><b><svg class="cal-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5 1.5v3M11 1.5v3"/></svg><i data-out="in">Оберіть дату</i></b></button>
+      <button class="hb-f" type="button" data-go><span>Виїзд</span><b><svg class="cal-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5 1.5v3M11 1.5v3"/></svg><i data-out="out">Оберіть дату</i></b></button>
+      <div class="hb-f hb-g"><span>Дорослі</span><div class="hb-st"><button type="button" data-g="ad" data-d="-1" aria-label="Менше дорослих">−</button><output data-out="ad">2</output><button type="button" data-g="ad" data-d="1" aria-label="Більше дорослих">+</button></div></div>
+      <div class="hb-f hb-g"><span>Діти</span><div class="hb-st"><button type="button" data-g="ch" data-d="-1" aria-label="Менше дітей">−</button><output data-out="ch">0</output><button type="button" data-g="ch" data-d="1" aria-label="Більше дітей">+</button></div></div>
+      <a class="btn gl hb-go" href="#bron" data-go>Перевірити дати <svg class="ar"><use href="#arr"/></svg></a>
+    </div>
     <div class="hint" id="hint"><span class="ms"></span>Гортайте: увімкнеться вечір</div>
     <p class="hero-note">Прототип · вечір згенеровано з вашого фото</p>
     <div class="hbar"><i id="hbar"></i></div>
@@ -955,7 +1004,7 @@ addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classL
 
 /* ---- перший екран: два прокрути, день -> вечір з гірляндами (кадри 1-62) ---- */
 var hero=$('#top'),cv=$('#film'),cx=cv.getContext('2d'),hsl=$$('.hs'),hpb=$$('.hp button'),hbar=$('#hbar'),hint=$('#hint');
-var N=62,mob=innerWidth<760,dir=mob?'seq/m/':'seq/d/',fr=new Array(N),cur=-1,step=-1;
+var N=62,mob=innerWidth<760,dir=mob?'seq/p/':'seq/d/',fr=new Array(N),cur=-1,step=-1;
 function pad(i){return ('00'+(i+1)).slice(-3)}
 function prog(){var d=hero.offsetHeight-innerHeight;return d>0?Math.min(1,Math.max(0,scrollY/d)):0}
 function near(i){for(var k=0;k<N;k++){var a=fr[i-k],b=fr[i+k];if(a&&a.complete&&a.naturalWidth)return a;if(b&&b.complete&&b.naturalWidth)return b}return null}
@@ -986,6 +1035,9 @@ var tick=false;addEventListener('scroll',function(){if(!tick){tick=true;requestA
 addEventListener('resize',function(){size();paint()});
 paint();
 
+/* ---- віконце броні в першому екрані: поки воно видно, нижня панель схована ---- */
+var hbk=$('#hbook');
+if(hbk&&'IntersectionObserver' in window){new IntersectionObserver(function(es){document.body.classList.toggle('hb-vis',es[0].isIntersecting)},{threshold:.15}).observe(hbk)}
 /* ---- поява блоків ---- */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
 $$('.rv').forEach(function(el){io.observe(el)});

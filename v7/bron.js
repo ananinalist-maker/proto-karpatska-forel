@@ -58,7 +58,14 @@ function render(){
   $('#calPrev').disabled=st.view<=new Date(today.getFullYear(),today.getMonth(),1);
   summary();
 }
+function outs(){
+  $$('[data-out=ad]').forEach(function(e){e.textContent=st.ad});
+  $$('[data-out=ch]').forEach(function(e){e.textContent=st.ch});
+  $$('[data-out=in]').forEach(function(e){e.textContent=st.a?fmt(st.a):'Оберіть дату'});
+  $$('[data-out=out]').forEach(function(e){e.textContent=st.b?fmt(st.b):'Оберіть дату'});
+}
 function summary(){
+  outs();
   var t;
   if($('#noDates').checked)t='Без дат: господар підкаже найближчі вільні.';
   else if(!st.a)t='Оберіть дату заїзду.';
