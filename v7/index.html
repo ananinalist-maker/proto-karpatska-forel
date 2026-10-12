@@ -699,6 +699,42 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
 .gtrack{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%)}
 @media (max-width:760px){.gtrack{-webkit-mask-image:none;mask-image:none}}
 
+/* 12.10: головні кнопки броні синім петролем з палітри «Coffee» (перегукується з басейном) */
+.btn.dk{background:var(--petrol);color:#f3f7f9}
+.btn.dk:hover{background:#0b2a3b}
+.hbook .hb-go{background:var(--petrol);color:#f3f7f9}
+.hbook .hb-go:hover{background:#0b2a3b}
+/* ПК: ці розділи як були (без верхнього відступу) */
+@media (min-width:901px){.sec.glass{padding-top:0}}
+/* телефон і планшет: частина розділів прозора, крізь них видно ліс */
+@media (max-width:900px){
+  .sec.glass{background:rgba(20,15,13,.3);color:var(--cream);padding-top:clamp(54px,8vw,90px)}
+  .glass .st h2,.glass h2{color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+  .glass .st .leaf{color:rgba(239,233,225,.3)}
+  .glass .st{--cream:transparent}
+  .glass .lead,.glass p,.glass .small{color:rgba(255,255,255,.9)}
+  .glass .rq p{color:var(--ink2)}
+  .glass .rq small{color:var(--mute)}
+  .glass .btn.ol{border-color:rgba(255,255,255,.7);color:#fff}
+  .glass .btn.ol:hover{background:#fff;color:var(--dark)}
+  .glass .circ{border-color:rgba(255,255,255,.7);color:#fff}
+  .glass .gal-nav .cnt{color:#fff}
+  .glass .perk{border-color:rgba(255,255,255,.65);background:rgba(20,15,13,.18);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+  .glass .perk svg{color:var(--glow)}
+  .glass .perk span{color:#fff}
+  .glass .perks-hint{color:rgba(255,255,255,.8)}
+  .glass .gtrack{-webkit-mask-image:none;mask-image:none}
+}
+/* відгуки на телефоні: дві стрічки, що їдуть самі */
+@media (max-width:760px){
+  .wall.swipe{display:grid;gap:12px;overflow:visible;margin-right:calc(var(--px) * -1);margin-left:calc(var(--px) * -1);padding:0}
+  .rrow{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding:0 var(--px)}
+  .rrow::-webkit-scrollbar{display:none}
+  .rrow .rq{flex:0 0 78%;margin:0}
+  .swipe-hint{display:none!important}
+}
+@media (max-width:900px){.glass .rq{color:var(--ink)}.glass .rq b{color:var(--ink)}.glass .rev-h .side p{color:rgba(255,255,255,.92);text-shadow:0 1px 10px rgba(0,0,0,.35)}}
+
 </style>
 <!-- GA4: вставити тег тут -->
 <!-- Meta Pixel: вставити тут -->
@@ -790,7 +826,7 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
 </section>
 
 <!-- 2б. ПЕРЕВАГИ -->
-<section class="sec" id="perks" style="padding-top:0">
+<section class="sec glass" id="perks">
   <div class="st rv"><svg class="leaf"><use href="#leaf"/></svg><h2>Переваги</h2></div>
   <div class="perks">
     <button class="perk rv" type="button" data-pk="fish"><img src="img/g-ponds-houses.webp" alt="" loading="lazy" width="1600" height="1064"><svg viewBox="0 0 48 48"><path d="M5 24c5-7 12-10 19-10 6 0 10 3 13 10-3 7-7 10-13 10-7 0-14-3-19-10z"/><path d="m37 24 7-6v12z"/><circle cx="13" cy="22" r="1.2" fill="currentColor"/></svg><span>Свої ставки з фореллю й коропом</span><em>Дивитися</em></button>
@@ -885,7 +921,7 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
 </section>
 
 <!-- 5. ФОТО -->
-<section class="sec" id="gallery" style="padding-top:0">
+<section class="sec glass" id="gallery">
   <div class="gal-h">
     <div class="st rv"><svg class="leaf"><use href="#leaf"/></svg><h2>Наша<span class="r">галерея</span></h2></div>
     <button class="btn ol rv d1" type="button" id="openAll">Усі фото · 24</button>
@@ -897,7 +933,7 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
 </section>
 
 <!-- 6. ВІДГУКИ -->
-<section class="sec" id="reviews" style="padding-top:0">
+<section class="sec glass" id="reviews">
   <div class="rev-h">
     <div class="st rv"><svg class="leaf"><use href="#leaf"/></svg><h2>Відгуки<span class="r">гостей</span></h2></div>
     <div class="side rv d1"><p>Дев'ять відгуків з Google. У них гості згадують тишу, чистоту і вид на гори.</p><a class="btn ol" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%9A%D0%B0%D1%80%D0%BF%D0%B0%D1%82%D1%81%D1%8C%D0%BA%D0%B0+%D0%A4%D0%BE%D1%80%D0%B5%D0%BB%D1%8C+%D0%A1%D0%B2%D0%B0%D0%BB%D1%8F%D0%B2%D0%B0" target="_blank" rel="noopener noreferrer">Усі відгуки в Google <svg class="ar"><use href="#arr"/></svg></a></div>
@@ -1268,7 +1304,22 @@ var R=[
 ];
 function card(r){return '<article class="rq"><div class="rw"><span class="av" aria-hidden="true">'+r[1][0]+'</span><div><b>'+r[1]+'</b><small>відгук у Google</small></div></div><p>«'+r[0]+'»</p></article>'}
 var wall=$('#wall'),cols=[[0,3,6],[1,4,7],[2,5,8]];
-if(innerWidth<=760){wall.classList.add('swipe');wall.innerHTML=R.map(card).join('');wall.insertAdjacentHTML('afterend','<p class="small swipe-hint">Гортайте вбік, щоб читати далі →</p>')}else{
+if(innerWidth<=760){
+  wall.classList.add('swipe');
+  var rowA=[0,1,2,3,4].map(function(i){return card(R[i])}).join(''),rowB=[5,6,7,8].map(function(i){return card(R[i])}).join('');
+  wall.innerHTML='<div class="rrow" data-dir="1">'+rowA+rowA+'</div><div class="rrow" data-dir="-1">'+rowB+rowB+'</div>';
+  /* стрічки їдуть самі; пальцем можна зупинити й погортати, за 2 с їдуть далі */
+  var rows=$$('.rrow').map(function(r){var o={el:r,dir:+r.dataset.dir,pos:0,hold:false,t:null};
+    r.addEventListener('touchstart',function(){o.hold=true;clearTimeout(o.t)},{passive:true});
+    r.addEventListener('touchend',function(){o.t=setTimeout(function(){o.pos=r.scrollLeft;o.hold=false},2000)},{passive:true});
+    return o});
+  var rvis=false;new IntersectionObserver(function(es){rvis=es[0].isIntersecting},{rootMargin:'100px'}).observe(wall);
+  function rib(){rows.forEach(function(o){var r=o.el,half=r.scrollWidth/2;if(!half)return;
+    if(!o.pos)o.pos=o.dir<0?half:1;
+    if(rvis&&!o.hold&&!RM){o.pos+=o.dir*.5;if(o.pos>=half)o.pos-=half;if(o.pos<=0)o.pos+=half;r.scrollLeft=o.pos}});
+    requestAnimationFrame(rib)}
+  requestAnimationFrame(rib);
+}else{
 if(innerWidth<=900)cols=[[0,2,4,6,8],[1,3,5,7],[]];
 wall.innerHTML=cols.map(function(c,k){var h=c.map(function(i){return card(R[i])}).join('');return '<div class="wcol'+(k===1?' rev':'')+'" style="--dur:'+(k===1?54:k===2?50:46)*(c.length>3?2.4:1)+'s">'+h+(RM?'':h)+'</div>'}).join('');}
 
