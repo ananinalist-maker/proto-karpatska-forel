@@ -654,9 +654,52 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
   .ss.on .nm{font-size:22px}
 }
 
+/* 12.10 (телефон): окно номера й попап переваги складаються стовпчиком (фото не наїжджає на назву) */
+@media (max-width:900px){.rm-box,.pk-box{display:block}}
+/* «Усі фото»: рядки не стискаються, фото не злипаються */
+.lb-grid{grid-auto-rows:max-content;align-content:start}
+/* відгуки: зупинка руху лише мишкою (на телефоні не «застрягає») */
+.wall:hover .wcol{animation-play-state:running}
+@media (hover:hover){.wall:hover .wcol{animation-play-state:paused}}
+.swipe-hint{display:none}
+@media (max-width:760px){
+  .wall.swipe{display:flex;height:auto;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;-webkit-mask-image:none;mask-image:none;margin-right:calc(var(--px) * -1);padding-right:var(--px);scrollbar-width:none}
+  .wall.swipe::-webkit-scrollbar{display:none}
+  .wall.swipe .rq{flex:0 0 84%;scroll-snap-align:start}
+  .swipe-hint{display:block;margin-top:12px}
+  /* заголовки розділів: листок менший, текст не залазить */
+  .st{padding:26px 0 0 18px;min-height:64px}
+  .st .leaf{width:38px;height:60px}
+  .st.onDark .leaf{color:#3a302a}
+  /* «Для кого»: усі чотири вкладки в один рядок */
+  .tabs{gap:14px;overflow:visible}
+  .tab{font-size:clamp(11px,3.3vw,13.5px);letter-spacing:0}
+}
+.st.onDark{--cream:var(--dark)}
+/* телефон і планшет: розділи як картки на тлі лісу (як на ПК, ліс видно) */
+@media (max-width:900px){
+  .col{width:calc(100% - 20px)}
+  .hero{margin:0 -10px}
+  .col>section:not(.hero),.col>footer{margin-top:10px;border-radius:18px;overflow:hidden}
+  .col>footer{margin-bottom:10px}
+}
+/* згода й cookie */
+.consent{margin-top:4px}
+.consent a{color:var(--bronze2)}
+.ck-open{border:0;background:none;padding:0;color:inherit;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.ck[hidden]{display:none}
+.ck{position:fixed;left:0;right:0;margin:0 auto;bottom:86px;z-index:58;width:min(620px,calc(100% - 20px));background:var(--cream2);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:0 20px 50px -20px rgba(20,15,13,.55)}
+.ck p{font-size:14px;line-height:1.5;color:var(--ink2)}
+.ck a{color:var(--bronze2)}
+.ck-row{display:flex;gap:10px;justify-content:flex-end;margin-top:12px;flex-wrap:wrap}
+.ck-row .btn{min-height:42px;padding:0 18px;font-size:11px}
+@media (max-width:760px){.ck{bottom:auto;top:70px}.ck-row .btn{flex:1}}
+
 </style>
 <!-- GA4: вставити тег тут -->
 <!-- Meta Pixel: вставити тут -->
+<!-- Аналітику вантажити лише після згоди на cookie: обгорнути теги у window.KF_LOAD_ANALYTICS = function()Ellipsis;
+     і викликати одразу, якщо localStorage['kf-cookies'] === 'all'. -->
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -903,6 +946,7 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
         <button class="btn dk" type="submit">Надіслати заявку</button>
         <button class="btn ol" type="button" id="toViber">Написати у Viber</button>
         <p class="small">«Написати у Viber» скопіює текст заявки з датами, лишиться вставити його в чат.</p>
+        <p class="small consent">Надсилаючи заявку, ви погоджуєтеся на обробку персональних даних відповідно до <a href="privacy.html">Політики конфіденційності</a>.</p>
       </div>
     </form>
     <aside class="mine rv d1">
@@ -982,7 +1026,7 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
       </div>
     </div>
   </div>
-  <div class="ft-bot"><span>Свалява, вул. Шепентала, 3В, Закарпатська область · додатковий <a href="tel:+380681021918">068 102 19 18</a></span><span>© 2026 Карпатська Форель, приватна садиба</span></div>
+  <div class="ft-bot"><span>Свалява, вул. Шепентала, 3В, Закарпатська область · додатковий <a href="tel:+380681021918">068 102 19 18</a></span><span>© 2026 Карпатська Форель, приватна садиба · <a href="privacy.html">Політика конфіденційності</a> · <button type="button" class="ck-open" id="ckOpen">Налаштування cookie</button></span></div>
   <p class="ft-cr">Прототип. Фото садиби з Booking і Google-картки, вечір на першому екрані згенеровано з вашого фото. Фон: ліси Боржави, «Осінній ранок на Боржаві», Ryzhkov Oleksandr, Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>.</p>
 </footer>
 </main>
@@ -1009,6 +1053,10 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
   </div>
 </div>
 
+<div class="ck" id="ck" role="dialog" aria-labelledby="ckT" hidden>
+  <p id="ckT">Сайт використовує файли cookie: необхідні для роботи календаря й заявки та, за вашою згодою, аналітичні. Детальніше в <a href="privacy.html">Політиці конфіденційності</a>.</p>
+  <div class="ck-row"><button type="button" class="btn ol" id="ckMin">Лише необхідні</button><button type="button" class="btn dk" id="ckAll">Прийняти</button></div>
+</div>
 <div class="dp-bg" id="dpBg" hidden></div>
 <div class="dp" id="dp" role="dialog" aria-labelledby="dpT" hidden>
   <div class="dp-top"><b id="dpT">Оберіть дату заїзду</b><div class="dp-nav"><button type="button" id="dpPrev" aria-label="Попередній місяць"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button><button type="button" id="dpNext" aria-label="Наступний місяць"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button><button type="button" class="dp-x" id="dpX" aria-label="Закрити">×</button></div></div>
@@ -1209,8 +1257,19 @@ var R=[
 ];
 function card(r){return '<article class="rq"><div class="rw"><span class="av" aria-hidden="true">'+r[1][0]+'</span><div><b>'+r[1]+'</b><small>відгук у Google</small></div></div><p>«'+r[0]+'»</p></article>'}
 var wall=$('#wall'),cols=[[0,3,6],[1,4,7],[2,5,8]];
-if(innerWidth<=760)cols=[[0,1,2,3,4,5,6,7,8],[],[]];else if(innerWidth<=900)cols=[[0,2,4,6,8],[1,3,5,7],[]];
-wall.innerHTML=cols.map(function(c,k){var h=c.map(function(i){return card(R[i])}).join('');return '<div class="wcol'+(k===1?' rev':'')+'" style="--dur:'+(k===1?54:k===2?50:46)*(c.length>3?2.4:1)+'s">'+h+(RM?'':h)+'</div>'}).join('');
+if(innerWidth<=760){wall.classList.add('swipe');wall.innerHTML=R.map(card).join('');wall.insertAdjacentHTML('afterend','<p class="small swipe-hint">Гортайте вбік, щоб читати далі →</p>')}else{
+if(innerWidth<=900)cols=[[0,2,4,6,8],[1,3,5,7],[]];
+wall.innerHTML=cols.map(function(c,k){var h=c.map(function(i){return card(R[i])}).join('');return '<div class="wcol'+(k===1?' rev':'')+'" style="--dur:'+(k===1?54:k===2?50:46)*(c.length>3?2.4:1)+'s">'+h+(RM?'':h)+'</div>'}).join('');}
+
+/* ---- cookie: згода (Закон України «Про захист персональних даних») ---- */
+var ck=$('#ck');
+function ckGet(){try{return localStorage.getItem('kf-cookies')}catch(e){return null}}
+function ckSet(v){try{localStorage.setItem('kf-cookies',v)}catch(e){}ck.hidden=true;window.KF_CONSENT=v;if(v==='all'&&window.KF_LOAD_ANALYTICS)window.KF_LOAD_ANALYTICS()}
+window.KF_CONSENT=ckGet();
+if(!window.KF_CONSENT)setTimeout(function(){ck.hidden=false},1200);
+$('#ckAll').addEventListener('click',function(){ckSet('all')});
+$('#ckMin').addEventListener('click',function(){ckSet('min')});
+$('#ckOpen').addEventListener('click',function(){ck.hidden=false});
 })();
 
 </script>
