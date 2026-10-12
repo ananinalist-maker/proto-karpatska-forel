@@ -597,6 +597,37 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
 }
 .hs .cta .btn.gl{display:none}
 
+/* 12.10: календар на місці (віконце першого екрана й нижня панель) */
+.dp[hidden],.dp-bg[hidden]{display:none}
+.dp{position:fixed;z-index:66;width:min(640px,calc(100vw - 24px));background:var(--cream2);color:var(--ink);border-radius:22px;padding:16px 18px 14px;box-shadow:0 30px 70px -20px rgba(20,15,13,.6);border:1px solid var(--line)}
+.dp-bg{position:fixed;inset:0;z-index:65;background:rgba(20,15,13,.45)}
+.dp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.dp-top b{font-family:var(--disp);font-weight:400;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bronze2)}
+.dp-nav{display:flex;gap:6px}
+.dp-nav button{width:36px;height:36px;border-radius:50%;border:1px solid rgba(33,29,28,.2);background:#fff;color:var(--dark);display:grid;place-items:center;cursor:pointer;font-size:20px;line-height:1}
+.dp-nav button svg{width:14px;height:14px}
+.dp-nav button:disabled{opacity:.35;cursor:default}
+.dp-cal{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:12px}
+.dp .legend{margin-top:8px}
+.dp-guests{display:flex;gap:26px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.dp-guests>div{display:flex;align-items:center;gap:12px}
+.dp-guests>div>span{font-size:13px;color:var(--ink2);min-width:56px}
+.dp-guests .hb-st{gap:10px;margin:0}
+.dp-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px}
+.dp-foot span{font-size:14px;font-weight:600}
+.dp-foot .btn{min-height:42px;padding:0 20px;font-size:11px}
+.dock .df[data-dp]{cursor:pointer}
+@media (max-width:760px){
+  .dp{left:0!important;right:0;bottom:0!important;top:auto!important;width:100%;max-height:90svh;overflow:auto;border-radius:22px 22px 0 0;padding:16px 14px calc(14px + env(safe-area-inset-bottom))}
+  .dp-cal{grid-template-columns:1fr}
+  .dp-guests{gap:16px;flex-wrap:wrap}
+  /* фото 3:2, як на скріні галереї; текст по центру між фото й віконцем */
+  #film{height:66.67vw}
+  .st-fade{top:calc(66.67vw - 56px)}
+  .hs{top:calc(66.67vw + 4px);bottom:212px;display:flex;flex-direction:column;justify-content:center}
+  .hint{top:calc(66.67vw - 38px)}
+}
+
 </style>
 <!-- GA4: вставити тег тут -->
 <!-- Meta Pixel: вставити тут -->
@@ -647,11 +678,11 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
     <ol class="hp" aria-label="Прокрутка першого екрана"><li><button class="on" type="button" data-to="0"><b>01</b><i></i>День</button></li><li><button type="button" data-to="1"><b>02</b><i></i>Вечір</button></li></ol>
     <div class="st-fade" aria-hidden="true"></div>
     <div class="hbook" id="hbook" role="group" aria-label="Перевірити вільні дати">
-      <button class="hb-f" type="button" data-go><span>Заїзд</span><b><svg class="cal-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5 1.5v3M11 1.5v3"/></svg><i data-out="in">Оберіть дату</i></b></button>
-      <button class="hb-f" type="button" data-go><span>Виїзд</span><b><svg class="cal-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5 1.5v3M11 1.5v3"/></svg><i data-out="out">Оберіть дату</i></b></button>
+      <button class="hb-f" type="button" data-dp="in" aria-haspopup="dialog"><span>Заїзд</span><b><svg class="cal-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5 1.5v3M11 1.5v3"/></svg><i data-out="in">Оберіть дату</i></b></button>
+      <button class="hb-f" type="button" data-dp="out" aria-haspopup="dialog"><span>Виїзд</span><b><svg class="cal-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5 1.5v3M11 1.5v3"/></svg><i data-out="out">Оберіть дату</i></b></button>
       <div class="hb-f hb-g"><span>Дорослі</span><div class="hb-st"><button type="button" data-g="ad" data-d="-1" aria-label="Менше дорослих">−</button><output data-out="ad">2</output><button type="button" data-g="ad" data-d="1" aria-label="Більше дорослих">+</button></div></div>
       <div class="hb-f hb-g"><span>Діти</span><div class="hb-st"><button type="button" data-g="ch" data-d="-1" aria-label="Менше дітей">−</button><output data-out="ch">0</output><button type="button" data-g="ch" data-d="1" aria-label="Більше дітей">+</button></div></div>
-      <a class="btn gl hb-go" href="#bron" data-go>Перевірити дати <svg class="ar"><use href="#arr"/></svg></a>
+      <a class="btn gl hb-go" href="#bron" data-check>Перевірити дати <svg class="ar"><use href="#arr"/></svg></a>
     </div>
     <div class="hint" id="hint"><span class="ms"></span>Гортайте: увімкнеться вечір</div>
     <p class="hero-note">Прототип · вечір згенеровано з вашого фото</p>
@@ -933,10 +964,10 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
 
 <div class="dock" id="dock" role="region" aria-label="Швидке бронювання">
   <p class="dock-t">Ваші<br>дати</p>
-  <button class="df" type="button" data-go><span>Заїзд</span><b id="pIn">Оберіть дату</b></button>
-  <button class="df" type="button" data-go><span>Виїзд</span><b id="pOut">Оберіть дату</b></button>
-  <button class="df g" type="button" data-go><span>Гості</span><b id="pG">2 дорослих</b></button>
-  <a class="btn dk" href="#bron" data-go>Перевірити дати</a>
+  <button class="df" type="button" data-dp="in" aria-haspopup="dialog"><span>Заїзд</span><b id="pIn">Оберіть дату</b></button>
+  <button class="df" type="button" data-dp="out" aria-haspopup="dialog"><span>Виїзд</span><b id="pOut">Оберіть дату</b></button>
+  <button class="df g" type="button" data-dp="g" aria-haspopup="dialog"><span>Гості</span><b id="pG">2 дорослих</b></button>
+  <a class="btn dk" href="#bron" data-check>Перевірити дати</a>
 </div>
 
 <div class="pk" id="pk" role="dialog" aria-modal="true" aria-labelledby="pkT">
@@ -951,6 +982,15 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
       <div class="row"><button class="btn dk" type="button" id="pkGo"></button><a class="btn ol" href="viber://chat?number=%2B380509256903">Viber</a></div>
     </div>
   </div>
+</div>
+
+<div class="dp-bg" id="dpBg" hidden></div>
+<div class="dp" id="dp" role="dialog" aria-labelledby="dpT" hidden>
+  <div class="dp-top"><b id="dpT">Оберіть дату заїзду</b><div class="dp-nav"><button type="button" id="dpPrev" aria-label="Попередній місяць"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button><button type="button" id="dpNext" aria-label="Наступний місяць"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button><button type="button" class="dp-x" id="dpX" aria-label="Закрити">×</button></div></div>
+  <div class="dp-cal" id="dpCal"></div>
+  <div class="legend"><span><i></i>вільно</span><span><i class="b"></i>зайнято</span><span><i class="s"></i>ваші дати</span></div>
+  <div class="dp-guests"><div><span>Дорослі</span><div class="hb-st"><button type="button" data-g="ad" data-d="-1" aria-label="Менше дорослих">−</button><output data-out="ad">2</output><button type="button" data-g="ad" data-d="1" aria-label="Більше дорослих">+</button></div></div><div><span>Діти</span><div class="hb-st"><button type="button" data-g="ch" data-d="-1" aria-label="Менше дітей">−</button><output data-out="ch">0</output><button type="button" data-g="ch" data-d="1" aria-label="Більше дітей">+</button></div></div></div>
+  <div class="dp-foot"><span id="dpSum" aria-live="polite">Оберіть дату заїзду.</span><button type="button" class="btn dk" id="dpOk">Готово</button></div>
 </div>
 
 <div class="rm" id="rm" role="dialog" aria-modal="true" aria-labelledby="rmT">

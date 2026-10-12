@@ -31,10 +31,11 @@ function adW(n){return n===1?'1 дорослий':n+' дорослих'}
 function fmt(d){return d.getDate()+' '+MGEN[d.getMonth()]}
 function setText(id,t){var el=document.getElementById(id);if(el)el.textContent=t}
 var cal=$('#cal');
-function render(){
-  var n=innerWidth>=720?2:1, h='', choosingOut=!!(st.a&&!st.b);
+var dp=$('#dp'),dpBg=$('#dpBg'),dpCal=$('#dpCal'),dpView=new Date(today.getFullYear(),today.getMonth(),1),dpAnchor=null,dpLast=null;
+function calHTML(view,n){
+  var h='', choosingOut=!!(st.a&&!st.b);
   for(var i=0;i<n;i++){
-    var m=new Date(st.view.getFullYear(),st.view.getMonth()+i,1);
+    var m=new Date(view.getFullYear(),view.getMonth()+i,1);
     h+='<div class="cal-m"><div class="cal-h">'+MON[m.getMonth()]+' '+m.getFullYear()+'</div><div class="cal-g">';
     WD.forEach(function(w){h+='<span class="cal-w">'+w+'</span>'});
     var off=(m.getDay()+6)%7;for(var j=0;j<off;j++)h+='<span></span>';
@@ -54,8 +55,12 @@ function render(){
     }
     h+='</div></div>';
   }
-  cal.innerHTML=h;
+  return h;
+}
+function render(){
+  cal.innerHTML=calHTML(st.view,innerWidth>=720?2:1);
   $('#calPrev').disabled=st.view<=new Date(today.getFullYear(),today.getMonth(),1);
+  if(dp&&!dp.hidden)dpRender();
   summary();
 }
 function outs(){
@@ -85,20 +90,61 @@ function summary(){
   var x=[];if($('#xChan').checked)x.push('чан на травах');if($('#xTrain').checked)x.push('рибалка');
   setText('sX',x.length?x.join(', '):'—');
 }
-cal.addEventListener('click',function(e){
-  var b=e.target.closest('.cal-d');if(!b||b.disabled)return;var dt=parse(b.dataset.k);
+function pick(dt){
   $('#noDates').checked=false;
   if(!st.a||st.b){if(full(dt))return;st.a=dt;st.b=null}
   else if(dt<=st.a){if(full(dt))return;st.a=dt}
   else if(free(st.a,dt)){st.b=dt}
   else if(!full(dt)){st.a=dt}
+  if(st.a)st.view=new Date(st.a.getFullYear(),st.a.getMonth(),1);
   render();
-});
+}
+cal.addEventListener('click',function(e){var b=e.target.closest('.cal-d');if(!b||b.disabled)return;pick(parse(b.dataset.k))});
 $('#calPrev').addEventListener('click',function(){st.view=new Date(st.view.getFullYear(),st.view.getMonth()-1,1);render()});
 $('#calNext').addEventListener('click',function(){st.view=new Date(st.view.getFullYear(),st.view.getMonth()+1,1);render()});
 $('#calReset').addEventListener('click',function(){st.a=st.b=null;render()});
 $('#noDates').addEventListener('change',function(){if(this.checked){st.a=st.b=null}render()});
 var lastW=innerWidth;addEventListener('resize',function(){if((innerWidth>=720)!==(lastW>=720)){lastW=innerWidth;render()}});
+function dpRender(){
+  dpCal.innerHTML=calHTML(dpView,innerWidth>=720?2:1);
+  $('#dpPrev').disabled=dpView<=new Date(today.getFullYear(),today.getMonth(),1);
+  var t;
+  if(!st.a)t='Оберіть дату заїзду';
+  else if(!st.b)t='Тепер дата виїзду';
+  else t='Ваші дати';
+  setText('dpT',t);
+  setText('dpSum',st.a&&st.b?fmt(st.a)+' → '+fmt(st.b)+' · '+nights(Math.round((st.b-st.a)/864e5)):st.a?'Заїзд '+fmt(st.a):'');
+  dpPlace();
+}
+function dpPlace(){
+  if(innerWidth<=760||!dpAnchor){dp.style.left=dp.style.top=dp.style.bottom='';return}
+  var r=dpAnchor.getBoundingClientRect(),w=dp.offsetWidth,h=dp.offsetHeight,left=Math.min(Math.max(12,r.left),innerWidth-w-12);
+  dp.style.left=left+'px';
+  if(r.top>h+20){dp.style.top='';dp.style.bottom=(innerHeight-r.top+10)+'px'}
+  else{dp.style.bottom='';dp.style.top=Math.min(r.bottom+10,innerHeight-h-12)+'px'}
+}
+function dpOpen(trigger,what){
+  dpLast=trigger;dpAnchor=trigger.closest('.hbook,.dock')||trigger;
+  if(what==='out'&&st.a&&st.b){st.b=null}
+  if(what==='in'){st.a=st.b=null;$('#noDates').checked=false}
+  dpView=st.a?new Date(st.a.getFullYear(),st.a.getMonth(),1):new Date(today.getFullYear(),today.getMonth(),1);
+  dp.hidden=false;if(innerWidth<=760)dpBg.hidden=false;
+  render();dpRender();
+  setTimeout(function(){var f=dp.querySelector('.cal-d:not([disabled])');if(f)f.focus()},40);
+}
+function dpClose(){if(dp.hidden)return;dp.hidden=true;dpBg.hidden=true;if(dpLast)dpLast.focus()}
+$$('[data-dp]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();dpOpen(b,b.dataset.dp)})});
+dpCal.addEventListener('click',function(e){var b=e.target.closest('.cal-d');if(!b||b.disabled)return;e.stopPropagation();pick(parse(b.dataset.k));if(st.a&&st.b)setTimeout(dpClose,450)});
+$('#dpPrev').addEventListener('click',function(e){e.stopPropagation();dpView=new Date(dpView.getFullYear(),dpView.getMonth()-1,1);dpRender()});
+$('#dpNext').addEventListener('click',function(e){e.stopPropagation();dpView=new Date(dpView.getFullYear(),dpView.getMonth()+1,1);dpRender()});
+$('#dpX').addEventListener('click',dpClose);
+$('#dpOk').addEventListener('click',dpClose);
+dpBg.addEventListener('click',dpClose);
+document.addEventListener('click',function(e){if(!dp.hidden&&!dp.contains(e.target)&&!e.target.closest('[data-dp]'))dpClose()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')dpClose()});
+addEventListener('resize',function(){if(!dp.hidden)dpPlace()});
+addEventListener('scroll',function(){if(!dp.hidden&&innerWidth>760)dpPlace()},{passive:true});
+$$('[data-check]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();if(!st.a||!st.b){e.stopPropagation();dpOpen(b,'in')}else goBook()})});
 function capCheck(){
   var g=st.ad+st.ch, c=CAP[st.type], h=$('#capHint');
   if(g>c){h.textContent=st.type==='any'?'Вас більше, ніж місць у готелі. Напишіть господарю, він підкаже варіанти.':'У цьому номері до '+c+' гостей. Для '+g+' краще кілька номерів: оберіть «Будь-який номер», господар підбере.';h.classList.add('on')}
