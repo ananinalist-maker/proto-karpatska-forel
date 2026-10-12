@@ -10,9 +10,9 @@ var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var VIBER='viber://chat?number=%2B380509256903';
 var AV=JSON.parse($('#demoAvail').textContent);
-var TYPES={any:['lx1','lx2','fm1','fm2','sd1','sd2'],lx:['lx1','lx2'],fm:['fm1','fm2'],sd:['sd1','sd2']};
-var CAP={any:14,lx:4,fm:2,sd:2};
-var NAMES={any:'будь-який вільний номер',lx:'Люкс сімейний',fm:'Сімейний номер з кухнею',sd:'Стандарт'};
+var TYPES={any:['lx1','lx2','fm1','fm2','sd1','sd2'],dl:['sd1'],tr:['sd2'],ap:['fm1','fm2'],a3:['lx1','lx2']};
+var CAP={any:14,dl:2,tr:2,ap:2,a3:4};
+var NAMES={any:'будь-який вільний номер',dl:'Делюкс з окремими ліжками',tr:'Двомісний номер з терасою',ap:'Апартаменти з кухнею',a3:'Трикімнатні апартаменти'};
 var MON=['Січень','Лютий','Березень','Квітень','Травень','Червень','Липень','Серпень','Вересень','Жовтень','Листопад','Грудень'];
 var MGEN=['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'];
 var WD=['Пн','Вт','Ср','Чт','Пт','Сб','Нд'];
