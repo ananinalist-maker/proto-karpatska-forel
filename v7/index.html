@@ -695,6 +695,10 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
 .ck-row .btn{min-height:42px;padding:0 18px;font-size:11px}
 @media (max-width:760px){.ck{bottom:auto;top:70px}.ck-row .btn{flex:1}}
 
+/* 12.10: галерея по колу, краї м'яко зникають */
+.gtrack{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%)}
+@media (max-width:760px){.gtrack{-webkit-mask-image:none;mask-image:none}}
+
 </style>
 <!-- GA4: вставити тег тут -->
 <!-- Meta Pixel: вставити тут -->
@@ -1219,14 +1223,21 @@ $('#rmGo').addEventListener('click',function(){var r=ROOMS[rcur];closeRoom();if(
 /* ---- галерея ---- */
 var G=[['g-pool','Корпус, басейн і шезлонги'],['pool-top','Басейн згори'],['g-roses','Троянди й гори'],['g-kolyba-in','Зал колиби'],['g-pond-firs','Ставок з альтанкою'],['g-house','Будинок серед туй'],['g-ponds-houses','Ставки'],['g-trout','Форель-гриль'],['g-chan','Чан на травах'],['g-pool-night','Басейн ввечері'],['g-pond-statue','Ставок зі статуєю'],['g-room','Номер'],['g-bath','Санвузол'],['g-gazebo','Альтанки з мангалом'],['g-deer','Косуля'],['g-play','Дитячий майданчик'],['g-kolyba-out','Колиба'],['g-hall','Зал для свят'],['g-dish2','Страва з форелі'],['g-winter','Садиба взимку'],['g-chan-winter','Чан узимку'],['g-autumn2','Осінь над ставком'],['g-territory','Територія'],['g-terrace','Тераси номерів']];
 var GS=[0,4,3,8,2,5,7,21,19,14];
-var gt=$('#gTrack');
-gt.innerHTML=GS.map(function(i,k){return '<button class="gs'+(k?'':' on')+'" type="button" data-i="'+i+'" aria-label="Відкрити фото: '+G[i][1]+'"><img src="img/'+G[i][0]+'.webp" alt="'+G[i][1]+'" loading="lazy"></button>'}).join('');
-var gsl=$$('.gs'),gi2=0;
-function gCenter(){var c=gt.scrollLeft+gt.clientWidth/2,best=0,bd=1e9;gsl.forEach(function(s,k){var d=Math.abs(s.offsetLeft+s.offsetWidth/2-c);if(d<bd){bd=d;best=k}});if(best!==gi2||!gsl[best].classList.contains('on')){gi2=best;gsl.forEach(function(s,k){s.classList.toggle('on',k===best)});$('#gCnt').textContent=(best+1)+' / '+gsl.length}}
-var gTick=false;gt.addEventListener('scroll',function(){if(!gTick){gTick=true;requestAnimationFrame(function(){gTick=false;gCenter()})}},{passive:true});
-function gGo(k){k=(k+gsl.length)%gsl.length;var s=gsl[k];gt.scrollTo({left:s.offsetLeft+s.offsetWidth/2-gt.clientWidth/2,behavior:RM?'auto':'smooth'})}
-$('#gPrev').addEventListener('click',function(){gGo(gi2-1)});
-$('#gNext').addEventListener('click',function(){gGo(gi2+1)});
+var gt=$('#gTrack'),gn=GS.length,GO=[GS.length-1].concat(GS.map(function(_,k){return k}),[0]);
+/* по колу: на початку копія останнього фото, в кінці копія першого */
+gt.innerHTML=GO.map(function(k,j){var i=GS[k];return '<button class="gs'+(j===1?' on':'')+'" type="button" data-k="'+k+'" data-i="'+i+'"'+(j===0||j===GO.length-1?' aria-hidden="true" tabindex="-1"':'')+' aria-label="Відкрити фото: '+G[i][1]+'"><img src="img/'+G[i][0]+'.webp" alt="'+G[i][1]+'" loading="lazy"></button>'}).join('');
+var gsl=$$('.gs'),gj=1,gi2=0,gEnd=null;
+function gLeft(j){var s=gsl[j];return s.offsetLeft+s.offsetWidth/2-gt.clientWidth/2}
+function gNear(){var c=gt.scrollLeft+gt.clientWidth/2,best=0,bd=1e9;gsl.forEach(function(s,k){var d=Math.abs(s.offsetLeft+s.offsetWidth/2-c);if(d<bd){bd=d;best=k}});return best}
+function gMark(j){gj=j;gi2=+gsl[j].dataset.k;gsl.forEach(function(s,k){s.classList.toggle('on',k===j)});$('#gCnt').textContent=(gi2+1)+' / '+gn}
+function gJump(j){gt.style.scrollSnapType='none';gt.scrollLeft=gLeft(j);gMark(j);requestAnimationFrame(function(){gt.style.scrollSnapType=''})}
+function gSettle(){var j=gNear();if(j===0)gJump(gn);else if(j===gn+1)gJump(1);else gMark(j)}
+var gTick=false;gt.addEventListener('scroll',function(){if(!gTick){gTick=true;requestAnimationFrame(function(){gTick=false;var j=gNear();if(j!==gj)gMark(j)})}clearTimeout(gEnd);gEnd=setTimeout(gSettle,140)},{passive:true});
+function gGo(j){gt.scrollTo({left:gLeft(j),behavior:RM?'auto':'smooth'})}
+function gInit(){gJump(gj)}
+gInit();addEventListener('load',gInit);addEventListener('resize',function(){gJump(gj)});
+$('#gPrev').addEventListener('click',function(){gGo(gj-1)});
+$('#gNext').addEventListener('click',function(){gGo(gj+1)});
 
 /* ---- усі фото ---- */
 var lb=$('#lb'),grid=$('#lbGrid'),view=$('#lbView'),lbImg=$('#lbImg'),lbCt=$('#lbCt'),li=0,last=null;
@@ -1235,7 +1246,7 @@ function openLb(i){last=document.activeElement;lb.classList.add('on');document.b
 function closeLb(){lb.classList.remove('on');view.classList.remove('on');document.body.style.overflow='';if(last)last.focus()}
 function show(i){li=(i+G.length)%G.length;lbImg.src='img/'+G[li][0]+'.webp';lbImg.alt=G[li][1];lbCt.textContent=(li+1)+' / '+G.length+' · '+G[li][1];view.classList.add('on');$('#lbBack').focus()}
 $('#openAll').addEventListener('click',function(){openLb(null)});
-gsl.forEach(function(b,k){b.addEventListener('click',function(){if(k!==gi2){gGo(k);return}openLb(+b.dataset.i)})});
+gsl.forEach(function(b,k){b.addEventListener('click',function(){if(k!==gj){gGo(k);return}openLb(+b.dataset.i)})});
 grid.addEventListener('click',function(e){var b=e.target.closest('button[data-i]');if(b)show(+b.dataset.i)});
 $('#lbX').addEventListener('click',closeLb);
 $('#lbBack').addEventListener('click',function(){view.classList.remove('on')});
