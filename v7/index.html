@@ -704,8 +704,6 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
 .btn.dk:hover{background:#0b2a3b}
 .hbook .hb-go{background:var(--petrol);color:#f3f7f9}
 .hbook .hb-go:hover{background:#0b2a3b}
-/* ПК: ці розділи як були (без верхнього відступу) */
-@media (min-width:901px){.sec.glass{padding-top:0}}
 /* телефон і планшет: частина розділів прозора, крізь них видно ліс */
 @media (max-width:900px){
   .sec.glass{background:rgba(20,15,13,.3);color:var(--cream);padding-top:clamp(54px,8vw,90px)}
@@ -734,6 +732,33 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
   .swipe-hint{display:none!important}
 }
 @media (max-width:900px){.glass .rq{color:var(--ink)}.glass .rq b{color:var(--ink)}.glass .rev-h .side p{color:rgba(255,255,255,.92);text-shadow:0 1px 10px rgba(0,0,0,.35)}}
+
+/* 12.10 (Анна, ПК): шапка рівно по ширині колонки; розділи окремими картками з проміжками, крізь які видно ліс;
+   «Переваги», «Галерея», «Відгуки» прозорі й на ПК (як на телефоні) */
+.hdr{left:0;right:0;margin:0 auto;width:var(--W)}
+.hdr-in{max-width:none;padding:0 var(--px)}
+.col>section:not(.hero),.col>footer{margin-top:14px;border-radius:22px;overflow:clip}
+.col>footer{margin-bottom:14px}
+.hero .stage{border-radius:0 0 22px 22px}
+.sec.glass{background:rgba(20,15,13,.3);color:var(--cream)}
+.glass .st h2,.glass h2{color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.glass .st .leaf{color:rgba(239,233,225,.3)}
+.glass .st{--cream:transparent}
+.glass .lead,.glass p,.glass .small{color:rgba(255,255,255,.9)}
+.glass .rev-h .side p{color:rgba(255,255,255,.92);text-shadow:0 1px 10px rgba(0,0,0,.35)}
+.glass .rq,.glass .rq b{color:var(--ink)}
+.glass .rq p{color:var(--ink2)}
+.glass .rq small{color:var(--mute)}
+.glass .btn.ol{border-color:rgba(255,255,255,.7);color:#fff}
+.glass .btn.ol:hover{background:#fff;color:var(--dark)}
+.glass .circ{border-color:rgba(255,255,255,.7);color:#fff}
+.glass .circ:hover{background:#fff;color:var(--dark)}
+.glass .gal-nav .cnt{color:#fff}
+.glass .perk{border-color:rgba(255,255,255,.65);background:rgba(20,15,13,.18);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.glass .perk svg{color:var(--glow)}
+.glass .perk span{color:#fff}
+.glass .perks-hint{color:rgba(255,255,255,.8)}
+@media (max-width:900px){.hdr{width:100%}.col>section:not(.hero),.col>footer{margin-top:10px;border-radius:18px}.hero .stage{border-radius:0}}
 
 </style>
 <!-- GA4: вставити тег тут -->
@@ -840,7 +865,7 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
 </section>
 
 <!-- 2в. ЧОТИРИ СЕЗОНИ -->
-<section class="sec" id="seasons" style="padding-top:0">
+<section class="sec" id="seasons">
   <div class="sea-h">
     <div class="st rv"><svg class="leaf"><use href="#leaf"/></svg><h2>Чотири<span class="r">сезони</span></h2></div>
     <p class="lead rv d1">Сюди їдуть цілий рік. У кожної пори свій привід, а басейн, ставки й чан чекають на місці.</p>
@@ -1015,7 +1040,7 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
 </section>
 
 <!-- 8. ПИТАННЯ -->
-<section class="sec" id="faq" style="padding-top:0">
+<section class="sec" id="faq">
   <div class="rv">
       <div class="st"><svg class="leaf"><use href="#leaf"/></svg><h2>Питання<span class="r">та відповіді</span></h2></div>
       <p class="lead faq-sub">Не знайшли відповіді? Напишіть господарю у Viber.</p>
