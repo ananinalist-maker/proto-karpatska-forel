@@ -639,6 +639,21 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
   .hint{top:calc(56px + 66.67vw - 64px)}
 }
 
+/* 12.10: «4 сезони» на телефоні як на ПК: чотири смуги поруч, натиснули: відкрилось, ще раз: закрилось */
+@media (max-width:760px){
+  .seasons{height:440px;overflow:visible;scroll-snap-type:none;margin-right:0;padding-right:0;gap:6px}
+  .ss{flex:1 1 0;height:auto;min-width:0;border-radius:4px}
+  .ss.on{flex-grow:3.4}
+  .ss .ds{opacity:0;transform:translateY(10px)}
+  .ss.on .ds{opacity:1;transform:none}
+  .ss .tx{left:14px;right:14px;bottom:16px}
+  .ss:not(.on) .tx{left:50%;right:auto;bottom:18px;transform:translateX(-50%)}
+  .ss:not(.on) .nm{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;font-size:17px}
+  .ss:not(.on) .nm i{display:none}
+  .ss:not(.on) .ds{display:none}
+  .ss.on .nm{font-size:22px}
+}
+
 </style>
 <!-- GA4: вставити тег тут -->
 <!-- Meta Pixel: вставити тут -->
@@ -682,9 +697,7 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
       <div class="cta fade f2"><a class="btn gl" href="#bron" data-go>Перевірити вільні дати</a><a class="btn ghost" href="viber://chat?number=%2B380509256903">Написати у Viber</a></div>
     </div>
     <div class="hs" data-s="1" aria-hidden="true">
-      <p class="eyebrow"><span class="line"><span class="li">Огляд Федора Шандора</span></span></p>
       <h2><span class="line"><span class="li big">ТОП-10</span></span><span class="line sm"><span class="li">форелевих господарств Закарпаття</span></span></h2>
-      <p class="t fade">Ввечері на терасах вмикаються гірлянди, басейн світиться, а чан уже нагріли. Господар відповідає сам.</p>
       <div class="cta fade f2"><a class="btn gl" href="#bron" data-go>Перевірити вільні дати</a><a class="btn ghost" href="viber://chat?number=%2B380509256903">Написати у Viber</a></div>
     </div>
     <ol class="hp" aria-label="Прокрутка першого екрана"><li><button class="on" type="button" data-to="0"><b>01</b><i></i>День</button></li><li><button type="button" data-to="1"><b>02</b><i></i>Вечір</button></li></ol>
@@ -1113,8 +1126,8 @@ $('#pkGo').addEventListener('click',function(){var d=PK[pkCur].d;closePk();if(wi
 
 /* ---- чотири сезони ---- */
 var ss=$$('.ss');
-function season(i){ss.forEach(function(b,k){b.classList.toggle('on',k===i);b.setAttribute('aria-pressed',k===i)})}
-ss.forEach(function(b,i){b.addEventListener('click',function(){season(i)});b.addEventListener('mouseenter',function(){if(innerWidth>760)season(i)})});
+function season(i,tog){if(tog&&ss[i].classList.contains('on'))i=-1;ss.forEach(function(b,k){b.classList.toggle('on',k===i);b.setAttribute('aria-pressed',k===i)})}
+ss.forEach(function(b,i){b.addEventListener('click',function(){season(i,true)});b.addEventListener('mouseenter',function(){if(innerWidth>760)season(i)})});
 
 /* ---- для кого ---- */
 var tabs=$$('.tab'),wps=$$('.wp'),wim=$$('#whoPh img'),wi=0;
