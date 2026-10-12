@@ -628,6 +628,17 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
   .hint{top:calc(66.67vw - 38px)}
 }
 
+/* 12.10: телефон: фото цілком, решта екрана = те саме фото, розмите (без «темного шматка») */
+#filmBg{display:none}
+@media (max-width:760px){
+  #filmBg{display:block;position:absolute;left:-40px;top:-40px;width:calc(100% + 80px);height:calc(100% + 80px);filter:blur(18px) brightness(.6) saturate(1.15)}
+  #film{top:56px;height:66.67vw;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 80%,transparent 100%)}
+  .st-fade{display:none}
+  .st-scrim{background:linear-gradient(180deg,rgba(20,15,13,.35) 0,rgba(20,15,13,0) 90px,rgba(20,15,13,0) 45%,rgba(20,15,13,.35) 75%,rgba(20,15,13,.5) 100%)}
+  .hs{top:calc(56px + 66.67vw - 24px);bottom:206px;justify-content:center}
+  .hint{top:calc(56px + 66.67vw - 64px)}
+}
+
 </style>
 <!-- GA4: вставити тег тут -->
 <!-- Meta Pixel: вставити тут -->
@@ -661,6 +672,7 @@ body.hb-vis .dock{opacity:0;transform:translateY(26px);pointer-events:none}
 <!-- 1. ПЕРШИЙ ЕКРАН: два прокрути, день і вечір -->
 <section class="hero" id="top" aria-label="Карпатська Форель">
   <div class="stage">
+    <canvas id="filmBg" aria-hidden="true"></canvas>
     <canvas id="film" aria-label="Садиба з басейном: день переходить у вечір, вмикаються гірлянди"></canvas>
     <div class="st-scrim"></div>
     <div class="hs on" data-s="0">
@@ -1043,15 +1055,15 @@ $$('#mmenu a').forEach(function(a){a.addEventListener('click',function(){setMenu
 addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('menu-open')){setMenu(false);burger.focus()}});
 
 /* ---- перший екран: два прокрути, день -> вечір з гірляндами (кадри 1-62) ---- */
-var hero=$('#top'),cv=$('#film'),cx=cv.getContext('2d'),hsl=$$('.hs'),hpb=$$('.hp button'),hbar=$('#hbar'),hint=$('#hint');
+var hero=$('#top'),cv=$('#film'),cx=cv.getContext('2d'),cvb=$('#filmBg'),cxb=cvb.getContext('2d'),hsl=$$('.hs'),hpb=$$('.hp button'),hbar=$('#hbar'),hint=$('#hint');
 var N=62,mob=innerWidth<760,dir=mob?'seq/p/':'seq/d/',fr=new Array(N),cur=-1,step=-1;
 function pad(i){return ('00'+(i+1)).slice(-3)}
 function prog(){var d=hero.offsetHeight-innerHeight;return d>0?Math.min(1,Math.max(0,scrollY/d)):0}
 function near(i){for(var k=0;k<N;k++){var a=fr[i-k],b=fr[i+k];if(a&&a.complete&&a.naturalWidth)return a;if(b&&b.complete&&b.naturalWidth)return b}return null}
-function size(){var r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=Math.round(r.width*d);cv.height=Math.round(r.height*d);cur=-1;draw()}
+function size(){var r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=Math.round(r.width*d);cv.height=Math.round(r.height*d);var rb=cvb.getBoundingClientRect();cvb.width=Math.max(1,Math.round(rb.width/3));cvb.height=Math.max(1,Math.round(rb.height/3));cur=-1;draw()}
 function draw(){
   var p=prog(),fp=Math.min(1,p/.85),i=Math.round(fp*(N-1)),im=near(i);
-  if(im&&!(i===cur&&im===fr[i])){cur=i;var W=cv.width,H=cv.height,s=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*s,h=im.naturalHeight*s;cx.drawImage(im,(W-w)/2,(H-h)/2,w,h)}
+  if(im&&!(i===cur&&im===fr[i])){cur=i;var W=cv.width,H=cv.height,s=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*s,h=im.naturalHeight*s;cx.drawImage(im,(W-w)/2,(H-h)/2,w,h);if(cvb.width>1){var BW=cvb.width,BH=cvb.height,bs=Math.max(BW/im.naturalWidth,BH/im.naturalHeight),bw=im.naturalWidth*bs,bh=im.naturalHeight*bs;cxb.drawImage(im,(BW-bw)/2,(BH-bh)/2,bw,bh)}}
   var st=p<.42?0:1;
   if(st!==step){step=st;hsl.forEach(function(el,k){el.classList.toggle('on',k===st);el.setAttribute('aria-hidden',k!==st)});hpb.forEach(function(b,k){b.classList.toggle('on',k===st)})}
   hbar.style.width=(p*100).toFixed(1)+'%';
