@@ -8,6 +8,9 @@
 var $=function(s){return document.querySelector(s)};
 var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var LIVE=document.documentElement.hasAttribute('data-live');
+var LEADS=window.KF_LEADS_URL||'';
+var PHONE_TXT='050\u00a0925\u00a069\u00a003';
 var VIBER='viber://chat?number=%2B380509256903';
 var AV=JSON.parse($('#demoAvail').textContent);
 var TYPES={any:['lx1','lx2','fm1','fm2','sd1','sd2'],dl:['sd1'],tr:['sd2'],ap:['fm1','fm2'],a3:['lx1','lx2']};
@@ -31,6 +34,7 @@ function adW(n){return n===1?'1 дорослий':n+' дорослих'}
 function fmt(d){return d.getDate()+' '+MGEN[d.getMonth()]}
 function setText(id,t){var el=document.getElementById(id);if(el)el.textContent=t}
 var cal=$('#cal');
+var quickAfter=false;
 var dp=$('#dp'),dpBg=$('#dpBg'),dpCal=$('#dpCal'),dpView=new Date(today.getFullYear(),today.getMonth(),1),dpAnchor=null,dpLast=null;
 function calHTML(view,n){
   var h='', choosingOut=!!(st.a&&!st.b);
@@ -132,7 +136,7 @@ function dpOpen(trigger,what){
   render();dpRender();
   setTimeout(function(){var f=dp.querySelector('.cal-d:not([disabled])');if(f)f.focus()},40);
 }
-function dpClose(){if(dp.hidden)return;dp.hidden=true;dpBg.hidden=true;if(dpLast)dpLast.focus()}
+function dpClose(){if(dp.hidden)return;dp.hidden=true;dpBg.hidden=true;if(quickAfter){quickAfter=false;if(st.a&&st.b){openQuick();return}}if(dpLast)dpLast.focus()}
 $$('[data-dp]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();dpOpen(b,b.dataset.dp)})});
 dpCal.addEventListener('click',function(e){var b=e.target.closest('.cal-d');if(!b||b.disabled)return;e.stopPropagation();pick(parse(b.dataset.k));if(st.a&&st.b)setTimeout(dpClose,450)});
 $('#dpPrev').addEventListener('click',function(e){e.stopPropagation();dpView=new Date(dpView.getFullYear(),dpView.getMonth()-1,1);dpRender()});
@@ -144,7 +148,7 @@ document.addEventListener('click',function(e){if(!dp.hidden&&!dp.contains(e.targ
 document.addEventListener('keydown',function(e){if(e.key==='Escape')dpClose()});
 addEventListener('resize',function(){if(!dp.hidden)dpPlace()});
 addEventListener('scroll',function(){if(!dp.hidden&&innerWidth>760)dpPlace()},{passive:true});
-$$('[data-check]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();if(!st.a||!st.b){e.stopPropagation();dpOpen(b,'in')}else goBook()})});
+$$('[data-check]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();if(!st.a||!st.b){e.stopPropagation();quickAfter=true;dpOpen(b,'in')}else openQuick()})});
 function capCheck(){
   var g=st.ad+st.ch, c=CAP[st.type], h=$('#capHint');
   if(g>c){h.textContent=st.type==='any'?'Вас більше, ніж місць у готелі. Напишіть господарю, він підкаже варіанти.':'У цьому номері до '+c+' гостей. Для '+g+' краще кілька номерів: оберіть «Будь-який номер», господар підбере.';h.classList.add('on')}
@@ -152,7 +156,7 @@ function capCheck(){
   else h.classList.remove('on');
 }
 function setType(v){
-  st.type=v;$$('#segType button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===v)});
+  st.type=v;$$('#segType button,#qbType button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===v)});
   if(st.a&&st.b&&!free(st.a,st.b)){st.a=st.b=null}
   if(st.a&&full(st.a)){st.a=st.b=null}
   capCheck();render();
@@ -181,7 +185,15 @@ function preset(o){
 }
 $$('[data-room],[data-fish],[data-chan]').forEach(function(b){b.addEventListener('click',function(){preset(b.dataset);goBook()})});
 $$('#xChan,#xTrain').forEach(function(c){c.addEventListener('change',summary)});
-window.KF={preset:preset,goBook:goBook};
+/* зайняті дати з Google-таблиці (sheet.js): types = {dl:[...],tr:[...],ap:[...],a3:[...]}, av = {rooms:{назва:{busy:[[з,до)...]}}} */
+function setAvail(types,av){
+  if(types){['dl','tr','ap','a3'].forEach(function(k){if(types[k]&&types[k].length)TYPES[k]=types[k]});TYPES.any=[].concat(TYPES.dl,TYPES.tr,TYPES.ap,TYPES.a3)}
+  AV=av&&av.rooms?av:{rooms:{}};
+  if(st.a&&st.b&&!free(st.a,st.b)){st.a=st.b=null}
+  if(st.a&&full(st.a)){st.a=st.b=null}
+  render();
+}
+window.KF={preset:preset,goBook:goBook,setAvail:setAvail};
 $$('[data-go]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();goBook()})});
 function message(){
   var L=['Вітаю! Заявка з сайту «Карпатська Форель».','Номер: '+NAMES[st.type]];
@@ -202,10 +214,90 @@ function closeModal(){if(!modal.classList.contains('on'))return;modal.classList.
 $('#mClose').addEventListener('click',closeModal);
 modal.addEventListener('click',function(e){if(e.target===modal)closeModal()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
-$('#bookForm').addEventListener('submit',function(e){e.preventDefault();openModal()});
-$('#toViber').addEventListener('click',function(){
-  var txt=message(), go=function(){location.href=VIBER};
+/* текст заявки в буфер і чат з господарем у Viber (draft підставляє текст, де Viber це вміє) */
+function sendViber(){
+  var txt=message(), go=function(){location.href=VIBER+'&draft='+encodeURIComponent(txt)};
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(go,go)}else go();
-});
+}
+/* копія заявки господарю (Worker → Telegram + таблиця заявок) */
+function payload(via,txt){
+  var nd=$('#noDates').checked||!st.a||!st.b, hp=$('#fWebsite');
+  return {via:via,text:txt,name:$('#fName').value.trim(),phone:$('#fPhone').value.trim(),reply:HOWN[st.how],
+    checkin:nd?'':fmt(st.a),checkout:nd?'':fmt(st.b),nights:nd?'':String(Math.round((st.b-st.a)/864e5)),
+    guests:adW(st.ad)+(st.ch?', '+kidsW(st.ch):''),room:NAMES[st.type],
+    comment:[$('#xChan').checked?'чан':'',$('#xTrain').checked?'рибалка':'',$('#fNote').value.trim()].filter(Boolean).join('; '),
+    website:hp?hp.value:'',page:location.href};
+}
+/* ту саму заявку повторно протягом 30 с не надсилаємо */
+var lastSig='',lastAt=0,lastOk=false;
+function dup(p){var sig=JSON.stringify(p);return {sig:sig,dup:sig===lastSig&&Date.now()-lastAt<30000}}
+function remember(sig,ok){lastSig=ok?sig:'';lastAt=Date.now();lastOk=ok}
+function post(p,extra){var o={method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p)};for(var k in extra)if(extra[k]!==undefined)o[k]=extra[k];return fetch(LEADS,o)}
+function copyToHost(){
+  if(!LEADS||!window.fetch)return;
+  var p=payload('viber',message()),r=dup(p);
+  if(r.dup)return;remember(r.sig,true);
+  try{post(p,{keepalive:true}).catch(function(){})}catch(x){}
+}
+var fErr=$('#fErr');
+function err(t,el,box){box=box||fErr;if(box)box.textContent=t||'';$$('#fName,#fPhone,#qName,#qPhone').forEach(function(x){x.removeAttribute('aria-invalid')});if(el){el.setAttribute('aria-invalid','true');el.focus()}}
+function setModal(title,text,viber){var t=$('#mT'),x=$('#mTx'),v=$('#mViber');if(t)t.textContent=title;if(x)x.textContent=text;if(v)v.hidden=!viber}
+function submitViber(){
+  if(LIVE){err('');setModal('Залишилось надіслати у Viber','Текст заявки вже скопійовано. У чаті з паном Євгеном вставте його, якщо Viber не вставив сам, і натисніть «Надіслати». Немає Viber? Подзвоніть: '+PHONE_TXT+'.',true)}
+  openModal();if(LIVE){copyToHost();sendViber()}
+}
+$('#bookForm').addEventListener('submit',function(e){e.preventDefault();submitViber()});
+/* «Немає Viber?»: заявка тільки через сайт; чекаємо відповідь до 8 с (no-cors: виконаний запит = успіх) */
+function siteSend(btn,nm,ph,box){
+  var v=ph.value.trim();
+  if(!nm.value.trim())return err('Вкажіть, як до вас звертатися.',nm,box);
+  if(st.how==='tg'?v.length<3:v.replace(/\D/g,'').length<9)return err(st.how==='tg'?'Вкажіть нік або номер у Telegram, щоб господар міг відповісти.':'Вкажіть номер телефону (не менше 9 цифр), щоб господар міг з вами зв’язатися.',ph,box);
+  err('',null,box);
+  var txt=message();
+  function done(ok){
+    closeQuick();
+    if(ok)setModal('Заявку надіслано','Господар отримав вашу заявку і зв’яжеться з вами найближчим часом ('+v+'). Якщо терміново, телефонуйте: '+PHONE_TXT+'.',false);
+    else setModal('Не вдалося надіслати','Будь ласка, зателефонуйте: '+PHONE_TXT+' або напишіть у Viber. Текст заявки нижче, його можна скопіювати.',false);
+    openModal();
+  }
+  if(!LEADS||!window.fetch)return done(false);
+  var p=payload('site',txt),r=dup(p);
+  if(r.dup)return done(lastOk);
+  var label=btn.textContent,timer,ctrl=window.AbortController?new AbortController():null;
+  btn.disabled=true;btn.textContent='Надсилаємо…';
+  var timeout=new Promise(function(res,rej){timer=setTimeout(function(){if(ctrl)ctrl.abort();rej(new Error('timeout'))},8000)});
+  var req;try{req=post(p,{signal:ctrl?ctrl.signal:undefined})}catch(x){req=Promise.reject(x)}
+  Promise.race([req,timeout]).then(function(){return true},function(){return false}).then(function(ok){
+    clearTimeout(timer);btn.disabled=false;btn.textContent=label;remember(r.sig,ok);done(ok);
+  });
+}
+var fSite=$('#fSite');
+if(fSite)fSite.addEventListener('click',function(){siteSend(fSite,$('#fName'),$('#fPhone'),fErr)});
+/* швидка заявка з першої плашки: ті самі дати й гості, ім'я й телефон синхронізуються з основною формою */
+var qb=$('#qb');
+function syncQ(toMain){[['#qName','#fName'],['#qPhone','#fPhone']].forEach(function(p){var a=$(p[0]),c=$(p[1]);if(!a||!c)return;if(toMain)c.value=a.value;else if(!a.value)a.value=c.value})}
+function openQuick(){
+  if(!qb)return goBook();
+  syncQ(false);
+  setText('qbSum',fmt(st.a)+' → '+fmt(st.b)+' · '+nights(Math.round((st.b-st.a)/864e5))+' · '+adW(st.ad)+(st.ch?', '+kidsW(st.ch):''));
+  $$('#qbType button').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.v===st.type)});
+  err('',null,$('#qErr'));
+  qb.classList.add('on');
+  setTimeout(function(){var f=$('#qName');if(f&&!f.value)f.focus()},80);
+}
+function closeQuick(){if(qb)qb.classList.remove('on')}
+if(qb){
+  $('#qbX').addEventListener('click',closeQuick);
+  qb.addEventListener('click',function(e){if(e.target===qb)closeQuick()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQuick()});
+  $$('#qbType button').forEach(function(x){x.addEventListener('click',function(){setType(x.dataset.v);capCheck()})});
+  $('#qbSum').addEventListener('click',function(e){e.stopPropagation();closeQuick();quickAfter=true;dpOpen($('#hbook [data-dp=in]')||$('#qbSum'),'in')});
+  $('#qbViber').addEventListener('click',function(){syncQ(true);closeQuick();submitViber()});
+  var qs=$('#qbSite');
+  if(!LEADS)qs.hidden=true;
+  else qs.addEventListener('click',function(){syncQ(true);siteSend(qs,$('#qName'),$('#qPhone'),$('#qErr'))});
+}
+var tv=$('#toViber');if(tv&&tv.tagName==='BUTTON')tv.addEventListener('click',sendViber);
+var mv=$('#mViber');if(mv)mv.addEventListener('click',sendViber);
 render();summary();
 })();
